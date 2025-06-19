@@ -26,9 +26,9 @@ namespace IntakeController {
         pros::Motor IntakeMotorObject;
         int DefaultIntakeSpeed;
         // The intake functions
-        Intake(pros::Motor IntakeMotor, const int MotorDefualtSpeed) {
-         IntakeMotorObject = IntakeMotor;
-         DefaultIntakeSpeed = MotorDefualtSpeed;
+        Intake(pros::Motor IntakeMotor, const int MotorDefaultSpeed) {
+          IntakeMotorObject = IntakeMotor;
+          DefaultIntakeSpeed = MotorDefaultSpeed;
         }
         void set_intake_status(bool IsRunning);
         void set_intake_direction(Direction IntakeDir);
