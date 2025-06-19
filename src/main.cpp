@@ -274,12 +274,12 @@ void opcontrol() {
 
     // Outtake reverse code
     if(master.get_digital(DIGITAL_L1) && OuttakeToggle == false) {
-      IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
+      IntakeMech.set_intake_direction(IntakeController::INTAKE_BACKWARD);
       IntakeMech.set_intake_status(true);
-      IntakeToggle = true;
-    } else if (master.get_digital(DIGITAL_L1) && IntakeToggle == true) {
+      OuttakeToggle = true;
+    } else if (master.get_digital(DIGITAL_L1) && OuttakeToggle == true) {
       IntakeMech.set_intake_status(false);
-      IntakeToggle = false;
+      OuttakeToggle = false;
     }
     
 
