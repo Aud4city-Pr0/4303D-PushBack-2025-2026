@@ -11,7 +11,7 @@
 // File includes
 //--------------
 #include "api.h"
-#include "pros/motors.h"
+#include "pros/motors.hpp"
 
 // The IntakeController Lib
 namespace IntakeController {
@@ -23,15 +23,17 @@ namespace IntakeController {
     class Intake
     {
         public:
-        pros::Motor* IntakeMotorObject;
+        pros::Motor* IntakeMotorObjectA;
+        pros::Motor* IntakeMotorObjectB;
         int DefaultIntakeSpeed;
         // This is the intake classes constructor function, it takes in a motor and an int that ranges from 0-127.
-        Intake(pros::Motor IntakeMotor, const int IntakeSpeed) {
-          IntakeMotorObject = &IntakeMotor;
+        Intake(pros::Motor IntakeMotorA, pros::Motor IntakeMotorB, const int IntakeSpeed) {
+          IntakeMotorObjectA = &IntakeMotorA;
+          IntakeMotorObjectB = &IntakeMotorB;
           DefaultIntakeSpeed = IntakeSpeed;
         }
         // The intake functions
         void set_intake_status(bool IsRunning);
         void set_intake_direction(Direction IntakeDir);
     };
-}
+};

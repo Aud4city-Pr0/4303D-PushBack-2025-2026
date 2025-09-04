@@ -9,6 +9,7 @@
 
 // File includes
 //--------------
+#include "EZ-Template/util.hpp"
 #include "pros/motors.h"
 #include "RobotMechs/IntakeControllerLib.hpp"
 
@@ -18,17 +19,26 @@
 // This function controlls the intake direction, it does this by making use of IntakeController::INTAKE_FORWARD and IntakeController::INTAKE_REVERSE.
 void IntakeController::Intake::set_intake_direction(IntakeController::Direction Dir) {
     if(Dir == IntakeController::INTAKE_FORWARD) {
-        this->IntakeMotorObject->set_reversed(false);
+        this->IntakeMotorObjectA->set_reversed(false);
+        this->IntakeMotorObjectB->set_reversed(false);
+        // printing out the current direction of the motor
+        ez::screen_print("Intake Direction: Foward", 8);
+
     } else if(Dir == IntakeController::INTAKE_BACKWARD) {
-        this->IntakeMotorObject->set_reversed(true);
+        this->IntakeMotorObjectA->set_reversed(true);
+        this->IntakeMotorObjectB->set_reversed(true);
+        // printing out the current direction of the motor
+        ez::screen_print("Intake Direction: Backward", 8);
     }
 }
 
 // This function controlls the intake by making it active or inactive via a boolean called IsRunning.
 void IntakeController::Intake::set_intake_status(bool IsRunning) {
     if(IsRunning == true) {
-        this->IntakeMotorObject->move(this->DefaultIntakeSpeed);
+        this->IntakeMotorObjectA->move(this->DefaultIntakeSpeed);
+        this->IntakeMotorObjectB->move(this->DefaultIntakeSpeed);
     } else if (IsRunning == false) {
-        this->IntakeMotorObject->brake();
+        this->IntakeMotorObjectA->brake();
+        this->IntakeMotorObjectB->brake();
     }
 }

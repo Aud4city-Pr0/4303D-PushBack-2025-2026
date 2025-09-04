@@ -8,8 +8,9 @@
 
 extern Drive chassis;
 
-// These are the actual motors, pistions and sensors of our robot
-pros::Motor BlockIntakeMotor(2, pros::v5::MotorGears::blue);
+// motors, sensors and pnematic defintions for mech classes
+pros::Motor BlockIntakeMotorA(-2, pros::v5::MotorGears::blue);
+pros::Motor BlockIntakeMotorB(-4, pros::v5::MotorGears::blue);
 
-// This is the IntakeController
-inline IntakeController::Intake IntakeMech(BlockIntakeMotor, 127);
+// mech defintions
+inline IntakeController::Intake IntakeMech(BlockIntakeMotorA, BlockIntakeMotorB, 127);
