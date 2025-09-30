@@ -2,7 +2,6 @@
 // File name: IntakeControllerLib.hpp
 // Creation date: 6/18/25
 // Created By: Zach D (4303D Main Coder)
-// Last updated: 6/19/25
 // Description: This is the Intake class, here you will find functions and arributes relted to our robots intake mech
 //-----------------------------------------
 

@@ -1,5 +1,8 @@
 #include "main.h"
+#include "EZ-Template/util.hpp"
+#include "pros/misc.h"
 #include "subsystems.hpp"
+#include "RobotMechs/PistionLiftLib.hpp"
 
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
@@ -276,13 +279,20 @@ void opcontrol() {
     }
 
     // Outtake reverse code
-    if(master.get_digital(DIGITAL_L1) && OuttakeToggle == false) {
+    if(master.get_digital(DIGITAL_R2) && OuttakeToggle == false) {
       IntakeMech.set_intake_direction(IntakeController::INTAKE_BACKWARD);
       IntakeMech.set_intake_status(true);
       OuttakeToggle = true;
-    } else if (master.get_digital(DIGITAL_L1) && OuttakeToggle == true) {
+    } else if (master.get_digital(DIGITAL_R2) && OuttakeToggle == true) {
       IntakeMech.set_intake_status(false);
       OuttakeToggle = false;
+    }
+
+    // Pistion lift code
+    if(master.get_digital(DIGITAL_L1) && LiftMech.get_pistion_staus() == PistionLiftLib::PistionState::LIFT_DOWN) {
+      LiftMech.set_pistion_status(PistionLiftLib::PistionState::LIFT_UP);
+    } else if (master.get_digital(DIGITAL_L1) && LiftMech.get_pistion_staus() == PistionLiftLib::PistionState::LIFT_UP) {
+      LiftMech.set_pistion_status(PistionLiftLib::PistionState::LIFT_DOWN);
     }
     
 
