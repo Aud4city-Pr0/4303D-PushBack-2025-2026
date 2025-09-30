@@ -289,9 +289,9 @@ void opcontrol() {
     }
 
     // Pistion lift code
-    if(master.get_digital(DIGITAL_L1) && LiftMech.get_pistion_staus() == PistionLiftLib::PistionState::LIFT_DOWN) {
+    if(master.get_digital(DIGITAL_L1) && LiftMech.get_pistion_staus() == PistionLiftLib::LIFT_DOWN) {
       LiftMech.set_pistion_status(PistionLiftLib::PistionState::LIFT_UP);
-    } else if (master.get_digital(DIGITAL_L1) && LiftMech.get_pistion_staus() == PistionLiftLib::PistionState::LIFT_UP) {
+    } else if (master.get_digital(DIGITAL_L1) && LiftMech.get_pistion_staus() == PistionLiftLib::LIFT_UP) {
       LiftMech.set_pistion_status(PistionLiftLib::PistionState::LIFT_DOWN);
     }
     
