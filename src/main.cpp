@@ -1,5 +1,6 @@
 #include "main.h"
 #include "EZ-Template/util.hpp"
+#include "RobotMechs/IntakeControllerLib.hpp"
 #include "pros/misc.h"
 #include "subsystems.hpp"
 #include "RobotMechs/PistionLiftLib.hpp"
@@ -265,30 +266,19 @@ void opcontrol() {
     // Put more user control code here!
     // . . .
 
-    // Intake forward code
-    if(master.get_digital(DIGITAL_R1) && IntakeToggle == false) {
+    // intake controll code
+    if(master.get_digital(DIGITAL_R1)) {
       IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
       IntakeMech.set_intake_status(true);
-      IntakeToggle = true;
-    } else if (master.get_digital(DIGITAL_R1) && IntakeToggle == true) {
-      IntakeMech.set_intake_status(false);
-      IntakeToggle = false;
-    }
-
-    // Outtake reverse code
-    if(master.get_digital(DIGITAL_R2) && OuttakeToggle == false) {
+    } else if (master.get_digital(DIGITAL_R1)) {
       IntakeMech.set_intake_direction(IntakeController::INTAKE_BACKWARD);
       IntakeMech.set_intake_status(true);
-      OuttakeToggle = true;
-    } else if (master.get_digital(DIGITAL_R2) && OuttakeToggle == true) {
-      IntakeMech.set_intake_status(false);
-      OuttakeToggle = false;
     }
 
     // Pistion lift code
-    if(master.get_digital(DIGITAL_L1) && LiftMech.get_pistion_staus() == PistionLiftLib::LIFT_DOWN) {
+    if(master.get_digital(DIGITAL_L1) && LiftMech.get_pistion_status() == 2) {
       LiftMech.set_pistion_status(PistionLiftLib::PistionState::LIFT_UP);
-    } else if (master.get_digital(DIGITAL_L1) && LiftMech.get_pistion_staus() == PistionLiftLib::LIFT_UP) {
+    } else if (master.get_digital(DIGITAL_L1) && LiftMech.get_pistion_status() == 1) {
       LiftMech.set_pistion_status(PistionLiftLib::PistionState::LIFT_DOWN);
     }
     

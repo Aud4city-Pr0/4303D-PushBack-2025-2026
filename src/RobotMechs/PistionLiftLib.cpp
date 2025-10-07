@@ -26,6 +26,12 @@ void PistionLiftLib::PistionLift::set_pistion_status(PistionState StateToSet) {
 
 
 // this function gets the current enum in CurrentState
-PistionLiftLib::PistionState get_pistion_staus() {
-    return PistionLiftLib::CurrentState;
+int PistionLiftLib::PistionLift::get_pistion_status() {
+    if(PistionLiftLib::CurrentState == PistionLiftLib::LIFT_UP) {
+        return 1;
+    } else if (PistionLiftLib::CurrentState == PistionLiftLib::LIFT_DOWN) {
+        return 2;
+    } else {
+        return 0;
+    }
 }
