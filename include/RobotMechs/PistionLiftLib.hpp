@@ -29,7 +29,7 @@ namespace PistionLiftLib {
         }
         // pisiton lift class functions
         void set_pistion_status(PistionState StateToSet);
-        PistionState get_pistion_staus();
+        bool get_pistion_status();
 
     };
 }
