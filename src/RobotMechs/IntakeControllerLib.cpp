@@ -18,14 +18,14 @@
 // This function controlls the intake direction, it does this by making use of IntakeController::INTAKE_FORWARD and IntakeController::INTAKE_REVERSE.
 void IntakeController::Intake::set_intake_direction(IntakeController::Direction Dir) {
     if(Dir == IntakeController::INTAKE_FORWARD) {
-        this->IntakeMotorObjectA->set_reversed(false);
-        this->IntakeMotorObjectB->set_reversed(false);
+        IntakeController::Intake::IntakeMotorObjectA->set_reversed(false);
+        IntakeController::Intake::IntakeMotorObjectB->set_reversed(false);
         // printing out the current direction of the motor
         ez::screen_print("Intake Direction: Foward", 8);
 
     } else if(Dir == IntakeController::INTAKE_BACKWARD) {
-        this->IntakeMotorObjectA->set_reversed(true);
-        this->IntakeMotorObjectB->set_reversed(true);
+        IntakeController::Intake::IntakeMotorObjectA->set_reversed(true);
+        IntakeController::Intake::IntakeMotorObjectB->set_reversed(true);
         // printing out the current direction of the motor
         ez::screen_print("Intake Direction: Backward", 8);
     }
@@ -34,10 +34,10 @@ void IntakeController::Intake::set_intake_direction(IntakeController::Direction 
 // This function controlls the intake by making it active or inactive via a boolean called IsRunning.
 void IntakeController::Intake::set_intake_status(bool IsRunning) {
     if(IsRunning == true) {
-        this->IntakeMotorObjectA->move(this->DefaultIntakeSpeed);
-        this->IntakeMotorObjectB->move(this->DefaultIntakeSpeed);
+        IntakeController::Intake::IntakeMotorObjectA->move(this->DefaultIntakeSpeed);
+        IntakeController::Intake::IntakeMotorObjectB->move(this->DefaultIntakeSpeed);
     } else if (IsRunning == false) {
-        this->IntakeMotorObjectA->brake();
-        this->IntakeMotorObjectB->brake();
+        IntakeController::Intake::IntakeMotorObjectA->brake();
+        IntakeController::Intake::IntakeMotorObjectB->brake();
     }
 }

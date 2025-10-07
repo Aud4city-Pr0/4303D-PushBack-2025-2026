@@ -10,10 +10,6 @@
 // https://ez-robotics.github.io/EZ-Template/
 /////
 
-// Default vars
-bool IntakeToggle = false;
-bool OuttakeToggle = false;
-
 // Chassis constructor
 ez::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
@@ -270,15 +266,13 @@ void opcontrol() {
     if(master.get_digital(DIGITAL_R1)) {
       IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
       IntakeMech.set_intake_status(true);
-    } else if (master.get_digital(DIGITAL_R1)) {
+    } else if (master.get_digital(DIGITAL_R2)) {
       IntakeMech.set_intake_direction(IntakeController::INTAKE_BACKWARD);
-      IntakeMech.set_intake_status(true);
-    }
-
+    }  
     // Pistion lift code
     if(master.get_digital(DIGITAL_L1) && LiftMech.get_pistion_status() == 2) {
       LiftMech.set_pistion_status(PistionLiftLib::PistionState::LIFT_UP);
-    } else if (master.get_digital(DIGITAL_L1) && LiftMech.get_pistion_status() == 1) {
+    } else if (master.get_digital(DIGITAL_L2) && LiftMech.get_pistion_status() == 1) {
       LiftMech.set_pistion_status(PistionLiftLib::PistionState::LIFT_DOWN);
     }
     

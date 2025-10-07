@@ -24,7 +24,7 @@ namespace PistionLiftLib {
     class PistionLift {
         public:
         ez::Piston* LiftActuator;
-        PistionLift(ez::Piston LiftPistionActuator) {
+        PistionLift(ez::Piston &LiftPistionActuator) {
             LiftActuator = &LiftPistionActuator;
         }
         // pisiton lift class functions
