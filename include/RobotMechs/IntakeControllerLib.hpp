@@ -17,7 +17,7 @@ namespace IntakeController {
     // The intake direction enum
     enum Direction {
       INTAKE_FORWARD = 0,
-      INTAKE_BACKWARD = 1
+      INTAKE_BACKWARD = 1,
     };
     class Intake
     {

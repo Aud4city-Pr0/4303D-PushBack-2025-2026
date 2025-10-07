@@ -1,6 +1,5 @@
 #include "main.h"
 #include "EZ-Template/util.hpp"
-#include "RobotMechs/IntakeControllerLib.hpp"
 #include "pros/misc.h"
 #include "subsystems.hpp"
 #include "RobotMechs/PistionLiftLib.hpp"
@@ -9,6 +8,10 @@
 // For installation, upgrading, documentations, and tutorials, check out our website!
 // https://ez-robotics.github.io/EZ-Template/
 /////
+
+// Default vars
+bool IntakeToggle = false;
+bool OuttakeToggle = false;
 
 // Chassis constructor
 ez::Drive chassis(
@@ -262,18 +265,30 @@ void opcontrol() {
     // Put more user control code here!
     // . . .
 
-    if(master.get_digital(DIGITAL_R1)) {
+    // Intake forward code
+    if(master.get_digital(DIGITAL_R1) && IntakeToggle == false) {
       IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
       IntakeMech.set_intake_status(true);
-    } else if (master.get_digital(DIGITAL_R2)) {
-      IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
+      IntakeToggle = true;
+    } else if (master.get_digital(DIGITAL_R1) && IntakeToggle == true) {
       IntakeMech.set_intake_status(false);
+      IntakeToggle = false;
+    }
+
+    // Outtake reverse code
+    if(master.get_digital(DIGITAL_R2) && OuttakeToggle == false) {
+      IntakeMech.set_intake_direction(IntakeController::INTAKE_BACKWARD);
+      IntakeMech.set_intake_status(true);
+      OuttakeToggle = true;
+    } else if (master.get_digital(DIGITAL_R2) && OuttakeToggle == true) {
+      IntakeMech.set_intake_status(false);
+      OuttakeToggle = false;
     }
 
     // Pistion lift code
-    if(master.get_digital(DIGITAL_L1) && LiftMech.get_pistion_status() == true) {
+    if(master.get_digital(DIGITAL_L1) && LiftMech.get_pistion_staus() == PistionLiftLib::LIFT_DOWN) {
       LiftMech.set_pistion_status(PistionLiftLib::PistionState::LIFT_UP);
-    } else if (master.get_digital(DIGITAL_L1) && LiftMech.get_pistion_status() == false) {
+    } else if (master.get_digital(DIGITAL_L1) && LiftMech.get_pistion_staus() == PistionLiftLib::LIFT_UP) {
       LiftMech.set_pistion_status(PistionLiftLib::PistionState::LIFT_DOWN);
     }
     
