@@ -68,7 +68,8 @@ void initialize() {
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
       {"(ONLY USE FOR DEBUGGING!) Measure Offsets\n\nThis will turn the robot a bunch of times and calculate your offsets for your tracking wheels.", measure_offsets},
-      {"Five Block Auto Right (RED)\n\nGets five blocks in right long goal.", FiveBlockAutoRedRight}
+      {"Five Block Auto Right (RED)\n\nGets five blocks in right long goal.", FiveBlockAutoRedRight},
+      {"Five Block Auto Left (RED)\n\nGets five blocks in the left long goal.", FiveBlockAutoRedLeft}
   });
 
   // Initialize chassis and auton selector
