@@ -20,14 +20,10 @@ void IntakeController::Intake::set_intake_direction(IntakeController::Direction 
     if(Dir == IntakeController::INTAKE_FORWARD) {
         this->IntakeMotorObjectA->set_reversed(false);
         this->IntakeMotorObjectB->set_reversed(false);
-        // printing out the current direction of the motor
-        ez::screen_print("Intake Direction: Foward", 8);
 
     } else if(Dir == IntakeController::INTAKE_BACKWARD) {
         this->IntakeMotorObjectA->set_reversed(true);
         this->IntakeMotorObjectB->set_reversed(true);
-        // printing out the current direction of the motor
-        ez::screen_print("Intake Direction: Backward", 8);
     }
 }
 
