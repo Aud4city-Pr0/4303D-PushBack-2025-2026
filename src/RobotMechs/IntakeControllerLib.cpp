@@ -30,8 +30,8 @@ void IntakeController::Intake::set_intake_direction(IntakeController::Direction 
 // This function controlls the intake by making it active or inactive via a boolean called IsRunning.
 void IntakeController::Intake::set_intake_status(bool IsRunning) {
     if(IsRunning == true) {
-        this->IntakeMotorObjectA->move(this->DefaultIntakeSpeed);
-        this->IntakeMotorObjectB->move(this->DefaultIntakeSpeed);
+        this->IntakeMotorObjectA->move_voltage(this->DefaultIntakeSpeed);
+        this->IntakeMotorObjectB->move_voltage(this->DefaultIntakeSpeed);
     } else if (IsRunning == false) {
         this->IntakeMotorObjectA->brake();
         this->IntakeMotorObjectB->brake();

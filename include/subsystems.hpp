@@ -22,5 +22,5 @@ inline ez::Piston MatchLoadMech('B', false);
 inline ez::tracking_wheel vertical_tracker(16, 2.0, 5.0);
 
 // mech defintions
-inline IntakeController::Intake IntakeMech(BlockIntakeMotorA, BlockIntakeMotorB, 127);
+inline IntakeController::Intake IntakeMech(BlockIntakeMotorA, BlockIntakeMotorB, 120000);
 inline PistionLiftLib::PistionLift LiftMech(LiftPisiton);
