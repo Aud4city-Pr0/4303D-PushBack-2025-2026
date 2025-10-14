@@ -178,3 +178,63 @@ void FiveBlockAutoRedLeft() {
   // stopping intake
   // end of code
 }
+
+void FiveBlockAutoBlueRight() {
+  // the start of our 15 sec five block auto
+  // setting bot starting pos
+  chassis.odom_xyt_set(47.621_in, 16.599_in, 0_deg);
+  chassis.pid_odom_set({{47.586_in, 46.195_in, 90_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  chassis.pid_odom_set({{62.896_in, 46.195_in, 90_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  // goes to loader to intake 3 blocks
+  // intaking blocks
+  // reverse to go to 2 blocks by mid goal
+  chassis.pid_odom_set({{23.927_in, 15.02_in, 0_deg}, rev, DRIVE_SPEED});
+  chassis.pid_wait();
+  // goes foward and intakes the 2 blocks by mid
+  // intaking while driving
+  chassis.pid_odom_set({{23.893_in, 35.241_in, 90_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  // stoping intake and moving to next cord
+  chassis.pid_odom_set({{-39.354_in, -35.74_in, 180_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  // going to long goal
+  chassis.pid_odom_set({{39.354_in, 35.74_in, 0_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  chassis.pid_odom_set({{39.109_in, 47.621_in, 270_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  // running intake to deposit all blocks into goal
+  // stopping intake
+  // end of code
+}
+
+void FiveBlockAutoBlueLeft() {
+  // the start of our 15 sec five block auto
+  // setting bot starting pos
+  chassis.odom_xyt_set(47.621_in, -16.599_in, 180_deg);
+  chassis.pid_odom_set({{47.586_in, -46.195_in, 90_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  chassis.pid_odom_set({{62.896_in, -46.195_in, 90_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  // goes to loader to intake 3 blocks
+  // intaking blocks
+  // reverse to go to 2 blocks by mid goal
+  chassis.pid_odom_set({{23.927_in, -15.02_in, 180_deg}, rev, DRIVE_SPEED});
+  chassis.pid_wait();
+  // goes foward and intakes the 2 blocks by mid
+  // intaking while driving
+  chassis.pid_odom_set({{23.893_in, -35.241_in, 90_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  // stoping intake and moving to next cord
+  chassis.pid_odom_set({{39.354_in, -35.74_in, 180_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  // going to long goal
+  chassis.pid_odom_set({{39.109_in, -47.621_in, 270_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  chassis.pid_odom_set({{25.956_in, -47.105_in, 270_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  // running intake to deposit all blocks into goal
+  // stopping intake
+  // end of code
+}
