@@ -16,6 +16,7 @@ extern Drive chassis;
 inline pros::Motor BlockIntakeMotorA(-2, pros::v5::MotorGears::blue);
 inline pros::Motor BlockIntakeMotorB(-4, pros::v5::MotorGears::blue);
 inline ez::Piston LiftPisiton('A', false);
+inline ez::Piston MatchLoadMech('B', false);
 
 // odom sensor
 inline ez::tracking_wheel vertical_tracker(16, 2.0, 5.0);

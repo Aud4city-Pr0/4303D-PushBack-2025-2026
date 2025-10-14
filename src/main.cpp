@@ -267,6 +267,9 @@ void opcontrol() {
     } else if (master.get_digital(DIGITAL_L2) && LiftMech.get_pistion_status() == 1) {
       LiftMech.set_pistion_status(PistionLiftLib::PistionState::LIFT_DOWN);
     }
+
+    // Match loader metch toggle function
+    MatchLoadMech.button_toggle(master.get_digital(DIGITAL_A));
     
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
