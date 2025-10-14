@@ -13,8 +13,8 @@ extern Drive chassis;
 
 
 // motors, sensors and pnematic defintions for mech classes
-inline pros::Motor BlockIntakeMotorA(-2, pros::v5::MotorGears::blue);
-inline pros::Motor BlockIntakeMotorB(-4, pros::v5::MotorGears::blue);
+inline pros::Motor BlockIntakeMotorA(-4, pros::v5::MotorGears::blue);
+inline pros::Motor BlockIntakeMotorB(7, pros::v5::MotorGears::blue);
 inline ez::Piston LiftPisiton('A', false);
 inline ez::Piston MatchLoadMech('B', false);
 

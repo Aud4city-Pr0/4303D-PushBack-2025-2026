@@ -1,10 +1,9 @@
 #include "main.h"
 #include "EZ-Template/util.hpp"
-#include "RobotMechs/IntakeControllerLib.hpp"
 #include "autons.hpp"
 #include "pros/misc.h"
 #include "subsystems.hpp"
-#include "RobotMechs/PistionLiftLib.hpp"
+#include "RobotMechs/helpers.hpp"
 
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
@@ -255,18 +254,11 @@ void opcontrol() {
     // . . .
 
     // intake controll code
-    if(master.get_digital(DIGITAL_R1)) {
-      IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
-      IntakeMech.set_intake_status(true);
-    } else if (master.get_digital(DIGITAL_R2)) {
-      IntakeMech.set_intake_direction(IntakeController::INTAKE_BACKWARD);
-    }  
+    driver_control_intake();
+    
     // Pistion lift code
-    if(master.get_digital(DIGITAL_L1) && LiftMech.get_pistion_status() == 2) {
-      LiftMech.set_pistion_status(PistionLiftLib::PistionState::LIFT_UP);
-    } else if (master.get_digital(DIGITAL_L2) && LiftMech.get_pistion_status() == 1) {
-      LiftMech.set_pistion_status(PistionLiftLib::PistionState::LIFT_DOWN);
-    }
+    driver_control_lift();
+    
 
     // Match loader metch toggle function
     MatchLoadMech.button_toggle(master.get_digital(DIGITAL_A));
