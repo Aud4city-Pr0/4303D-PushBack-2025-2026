@@ -70,7 +70,9 @@ void initialize() {
       {"Five Block Auto Right (RED)\n\nGets five blocks in right long goal.", FiveBlockAutoRedRight},
       {"Five Block Auto Left (RED)\n\nGets five blocks in the left long goal.", FiveBlockAutoRedLeft},
       {"Five Block Auto Right (BLUE)\n\nGets five blocks in right long goal.", FiveBlockAutoBlueRight},
-      {"Five Block Auto Left (BLUE)\n\nGets five blocks in the left long goal.", FiveBlockAutoBlueLeft}
+      {"Five Block Auto Left (BLUE)\n\nGets five blocks in the left long goal.", FiveBlockAutoBlueLeft},
+      {"Three Block Auto Bottom (RED)\n\nGets three blocks in bottom middle goal.", ThreeBlockAutoBottomRed},
+      {"Three Block Auto Top (RED)\n\nGets three blocks in bottom middle goal.", ThreeBlockAutoTopRed}
   });
 
   // Initialize chassis and auton selector
