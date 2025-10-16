@@ -75,7 +75,7 @@ void initialize() {
       {"Three Block Auto Top (RED)\n\nGets three blocks in bottom middle goal.", ThreeBlockAutoTopRed}
   });
 
-  // Initialize chassis and auton selector
+  // Initialize chassis and auton selector`
   chassis.initialize();
   ez::as::initialize();
   master.rumble(chassis.drive_imu_calibrated() ? "." : "---");
