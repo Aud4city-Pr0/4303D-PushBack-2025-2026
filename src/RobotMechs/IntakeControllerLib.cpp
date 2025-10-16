@@ -18,12 +18,12 @@
 // This function controlls the intake direction, it does this by making use of IntakeController::INTAKE_FORWARD and IntakeController::INTAKE_REVERSE.
 void IntakeController::Intake::set_intake_direction(IntakeController::Direction Dir) {
     if(Dir == IntakeController::INTAKE_FORWARD) {
-        this->IntakeMotorObjectA->set_reversed(false);
-        this->IntakeMotorObjectB->set_reversed(true);
-
-    } else if(Dir == IntakeController::INTAKE_BACKWARD) {
         this->IntakeMotorObjectA->set_reversed(true);
         this->IntakeMotorObjectB->set_reversed(false);
+
+    } else if(Dir == IntakeController::INTAKE_BACKWARD) {
+        this->IntakeMotorObjectA->set_reversed(false);
+        this->IntakeMotorObjectB->set_reversed(true);
     }
 }
 
