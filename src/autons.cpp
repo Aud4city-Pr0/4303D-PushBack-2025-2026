@@ -238,3 +238,87 @@ void FiveBlockAutoBlueLeft() {
   // stopping intake
   // end of code
 }
+
+void ThreeBlockAutoBottomRed() {
+  // the start of our 15 second three block auto for bottom of the middle goal
+  // setting bot pos
+  chassis.odom_xyt_set(-51.747_in, -12.545_in, 130_deg);
+  chassis.pid_odom_set({{-38.594_in, -23.119_in, 90_deg}, fwd, DRIVE_SPEED});
+  // turning on intake
+  chassis.pid_wait();
+  chassis.pid_odom_set({{-21.056_in, -23.893_in, 315_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  // turn off intake
+  chassis.pid_odom_set({{-27.246_in, -16.671_in, 90_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  chassis.pid_odom_set({{-16.671_in, -16.929_in, 40_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  chassis.pid_odom_set({{-11.255_in, -10.481_in, 45_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  // intake on
+  // end of auto
+
+
+}
+
+void ThreeBlockAutoTopRed() {
+  // the start of our 15 second three block auto for bottom of the middle goal
+  // setting bot pos
+  chassis.odom_xyt_set(-51.747_in, 12.545_in, 50_deg);
+  chassis.pid_odom_set({{-38.594_in, 23.119_in, 90_deg}, fwd, DRIVE_SPEED});
+  // turning on intake
+  chassis.pid_wait();
+  chassis.pid_odom_set({{-21.056_in, 23.893_in, 225_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  // turn off intake
+  chassis.pid_odom_set({{-27.246_in, 16.671_in, 90_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  chassis.pid_odom_set({{-16.671_in, 16.929_in, 140_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  chassis.pid_odom_set({{-11.255_in, 10.481_in, 135_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  // intake on
+  // end of auto
+}
+
+void ThreeBlockAutoBottomBlue() {
+  // the start of our 15 second three block auto for bottom of the middle goal
+  // setting bot pos
+  chassis.odom_xyt_set(51.747_in, -12.545_in, 230_deg);
+  chassis.pid_odom_set({{-38.594_in, -23.119_in, 90_deg}, fwd, DRIVE_SPEED});
+  // turning on intake
+  chassis.pid_wait();
+  chassis.pid_odom_set({{38.594_in, -23.119_in, 270_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  // turn off intake
+  chassis.pid_odom_set({{21.056_in, -23.893_in, 45_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  chassis.pid_odom_set({{27.246_in, -16.671_in, 270_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  chassis.pid_odom_set({{16.671_in, -16.929_in, 320_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  // intake on
+  // end of auto
+
+
+}
+
+void ThreeBlockAutoTopBlue() {
+  // the start of our 15 second three block auto for bottom of the middle goal
+  // setting bot pos
+  chassis.odom_xyt_set(-51.747_in, 12.545_in, 50_deg);
+  chassis.pid_odom_set({{-38.594_in, 23.119_in, 90_deg}, fwd, DRIVE_SPEED});
+  // turning on intake
+  chassis.pid_wait();
+  chassis.pid_odom_set({{-21.056_in, 23.893_in, 225_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  // turn off intake
+  chassis.pid_odom_set({{-27.246_in, 16.671_in, 90_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  chassis.pid_odom_set({{-16.671_in, 16.929_in, 140_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  chassis.pid_odom_set({{-11.255_in, 10.481_in, 135_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_wait();
+  // intake on
+  // end of auto
+}
