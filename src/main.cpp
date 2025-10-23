@@ -262,8 +262,11 @@ void opcontrol() {
     driver_control_lift();
     
 
-    // Match loader metch toggle function
+    // Match loader mech toggle function
     MatchLoadMech.button_toggle(master.get_digital(DIGITAL_A));
+
+    // Indexer mech toggle function
+    IndexerPistion.button_toggle(master.get_digital(DIGITAL_B));
     
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME

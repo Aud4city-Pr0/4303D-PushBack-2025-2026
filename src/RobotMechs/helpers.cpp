@@ -49,3 +49,12 @@ void driver_control_intake() {
       IntakeMech.set_intake_status(false);
     }
 }
+
+// This function helps control the match load mech for auto
+void set_indexer_status(bool status) {
+    if(status == true && IndexerPistion.get() == false) {
+        MatchLoadMech.set(true);
+    } else if(status == false && IndexerPistion.get() == true) {
+        MatchLoadMech.set(false);
+    }
+}
