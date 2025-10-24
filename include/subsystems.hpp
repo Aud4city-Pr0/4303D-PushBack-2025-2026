@@ -17,7 +17,7 @@ inline pros::Motor BlockIntakeMotorA(-4, pros::v5::MotorGears::blue);
 inline pros::Motor BlockIntakeMotorB(7, pros::v5::MotorGears::blue);
 inline ez::Piston LiftPisiton('A', false);
 inline ez::Piston MatchLoadMech('B', false);
-inline ez::Piston IndexerPistion('C', true);
+inline ez::Piston IndexerPistion('D', true);
 
 // odom sensor
 inline ez::tracking_wheel vertical_tracker(16, 2.0, 5.0);
