@@ -1,6 +1,9 @@
 #include "autons.hpp"
+#include "RobotMechs/IntakeControllerLib.hpp"
 #include "main.h"
+#include "pros/rtos.hpp"
 #include "subsystems.hpp"
+#include "RobotMechs/helpers.hpp"
 
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
@@ -128,10 +131,17 @@ void FiveBlockAutoRedRight() {
   chassis.pid_wait();
   // goes to loader to intake 3 blocks
   // intaking blocks
+  set_match_loader_status(true);
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
+  IntakeMech.set_intake_status(true);
+  pros::delay(3000);
+  IntakeMech.set_intake_status(false);
   // reverse to go to 2 blocks by mid goal
   chassis.pid_odom_set({{-23.927_in, 15.02_in, 0_deg}, rev, DRIVE_SPEED});
   chassis.pid_wait();
   // goes foward and intakes the 2 blocks by mid
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
+  IntakeMech.set_intake_status(true);
   // intaking while driving
   chassis.pid_odom_set({{-23.893_in, 35.241_in, 270_deg}, fwd, DRIVE_SPEED});
   chassis.pid_wait();
