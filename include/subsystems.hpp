@@ -19,9 +19,6 @@ inline ez::Piston LiftPisiton('A', false);
 inline ez::Piston MatchLoadMech('B', false);
 inline ez::Piston IndexerPistion('D', true);
 
-// odom sensor
-//inline ez::tracking_wheel vertical_tracker(16, 2.0, 5.0);
-
 // mech defintions
 inline IntakeController::Intake IntakeMech(BlockIntakeMotorA, BlockIntakeMotorB, 120000);
 inline PistionLiftLib::PistionLift LiftMech(LiftPisiton);
