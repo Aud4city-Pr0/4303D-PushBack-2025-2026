@@ -20,10 +20,12 @@ void IntakeController::Intake::set_intake_direction(IntakeController::Direction 
     if(Dir == IntakeController::INTAKE_FORWARD) {
         this->IntakeMotorObjectA->set_reversed(true);
         this->IntakeMotorObjectB->set_reversed(false);
+        this->IntakeMotorObjectC->set_reversed(true);
 
     } else if(Dir == IntakeController::INTAKE_BACKWARD) {
         this->IntakeMotorObjectA->set_reversed(false);
         this->IntakeMotorObjectB->set_reversed(true);
+        this->IntakeMotorObjectC->set_reversed(false);
     }
 }
 
@@ -32,8 +34,23 @@ void IntakeController::Intake::set_intake_status(bool IsRunning) {
     if(IsRunning == true) {
         this->IntakeMotorObjectA->move_voltage(this->DefaultIntakeSpeed);
         this->IntakeMotorObjectB->move_voltage(this->DefaultIntakeSpeed);
+        this->IntakeMotorObjectC->move_voltage(this->DefaultIntakeSpeed);
     } else if (IsRunning == false) {
         this->IntakeMotorObjectA->brake();
         this->IntakeMotorObjectB->brake();
+        this->IntakeMotorObjectC->brake();
+    }
+}
+
+// This function is like the normal set_intake_status function, but it allows a custom speed to be used instead of the default intake speed
+void IntakeController::Intake::set_intake_status(bool IsRunning, const int IntakeSpeed) {
+    if(IsRunning == true) {
+        this->IntakeMotorObjectA->move_voltage(IntakeSpeed);
+        this->IntakeMotorObjectB->move_voltage(IntakeSpeed);
+        this->IntakeMotorObjectC->move_voltage(IntakeSpeed);
+    } else if (IsRunning == false) {
+        this->IntakeMotorObjectA->brake();
+        this->IntakeMotorObjectB->brake();
+        this->IntakeMotorObjectC->brake();
     }
 }
