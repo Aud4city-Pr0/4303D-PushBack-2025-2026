@@ -63,10 +63,10 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({ 
-      {"Five Block Auto Right (RED)\n\nGets five blocks in right long goal.", FiveBlockAutoRedRight},
-      {"Five Block Auto Left (RED)\n\nGets five blocks in the left long goal.", FiveBlockAutoRedLeft},
-      {"Five Block Auto Right (BLUE)\n\nGets five blocks in right long goal.", FiveBlockAutoBlueRight},
-      {"Five Block Auto Left (BLUE)\n\nGets five blocks in the left long goal.", FiveBlockAutoBlueLeft},
+      {"Seven Block Auto Right (RED)\n\nGets Seven blocks in right long goal.", SevenBlockAutoRedRight},
+      {"Seven Block Auto Left (RED)\n\nGets Seven blocks in the left long goal.", SevenBlockAutoRedLeft},
+      {"Seven Block Auto Right (BLUE)\n\nGets Seven blocks in right long goal.", SevenBlockAutoBlueRight},
+      {"Seven Block Auto Left (BLUE)\n\nGets Seven blocks in the left long goal.", SevenBlockAutoBlueLeft},
       {"Three Block Auto Bottom (RED)\n\nGets three blocks in bottom middle goal.", ThreeBlockAutoBottomRed},
       {"Three Block Auto Top (RED)\n\nGets three blocks in bottom middle goal.", ThreeBlockAutoTopBlue},
       {"Three Block Auto Bottom (BLUE)\n\nGets three blocks in bottom middle goal.", ThreeBlockAutoBottomRed},

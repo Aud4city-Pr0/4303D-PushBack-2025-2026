@@ -1,10 +1,10 @@
 #pragma once
 
 void default_constants();
-void FiveBlockAutoRedRight();
-void FiveBlockAutoRedLeft();
-void FiveBlockAutoBlueRight();
-void FiveBlockAutoBlueLeft();
+void SevenBlockAutoRedRight();
+void SevenBlockAutoRedLeft();
+void SevenBlockAutoBlueRight();
+void SevenBlockAutoBlueLeft();
 void ThreeBlockAutoBottomRed();
 void ThreeBlockAutoBottomBlue();
 void ThreeBlockAutoTopRed();

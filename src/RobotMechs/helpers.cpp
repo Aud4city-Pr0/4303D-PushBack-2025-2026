@@ -11,7 +11,7 @@
 #include "subsystems.hpp"
 #include "RobotMechs/helpers.hpp"
 #include "RobotMechs/IntakeControllerLib.hpp"
-#include "RobotMechs/PistionLiftLib.hpp"
+#include "RobotMechs/PisitionIndexerLib.hpp"
 #include "pros/misc.h"
 
 // Helper functions
@@ -29,10 +29,10 @@ void set_match_loader_status(bool status) {
 // This is driver control code for our lift
 void driver_control_lift() {
     // Pistion lift code
-    if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L1) && LiftMech.get_pistion_status() == 2) {
-      LiftMech.set_pistion_status(PistionLiftLib::PistionState::LIFT_UP);
-    } else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2) && LiftMech.get_pistion_status() == 1) {
-      LiftMech.set_pistion_status(PistionLiftLib::PistionState::LIFT_DOWN);
+    if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L1) && IndexerMech.get_pistion_status() == 2) {
+      IndexerMech.set_pistion_status(PistionIndexerLib::PistionState::INDEXER_OPEN);
+    } else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2) && IndexerMech.get_pistion_status() == 1) {
+      IndexerMech.set_pistion_status(PistionIndexerLib::PistionState::INDEXER_CLOSED);
     }
 }
 

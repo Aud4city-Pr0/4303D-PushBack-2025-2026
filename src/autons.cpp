@@ -1,6 +1,6 @@
 #include "autons.hpp"
 #include "RobotMechs/IntakeControllerLib.hpp"
-#include "RobotMechs/PistionLiftLib.hpp"
+#include "RobotMechs/PistionIndexerLib.hpp"
 #include "main.h"
 #include "pros/rtos.hpp"
 #include "pros/motors.h"
@@ -123,63 +123,25 @@ void measure_offsets() {
 // Our Push Back Autos
 // This section will contain autos for competions and skills
 // -------------------
-void FiveBlockAutoRedRight() {
-  // the start of our 15 sec five block auto
-  // setting bot starting pos
-
-  // backup code
-  chassis.pid_drive_set(28_in, 47);
+void SevenBlockAutoRedRight() {
+  // the start of our 15 sec Seven block auto
+  // driving the bot the blocks
+  chassis.pid_drive_set(25_in, 95);
+  chassis.pid_wait();
+  // turning on intake
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
-  IntakeMech.set_intake_status(true);
+  IntakeMech.set_intake_status(true, 10000);
+  // turning the bot to face the three blocks on the corner of mid goal
+  chassis.pid_turn_set(90_deg, 95);
   chassis.pid_wait();
-  IntakeMech.set_intake_status(false);
-  chassis.pid_turn_set(-67_deg, 47);
+  chassis.pid_drive_set(30_in, 95);
   chassis.pid_wait();
-  chassis.pid_drive_set(20_in, 47);
-  chassis.pid_speed_max_set(DRIVE_SPEED);
-  chassis.pid_wait();
-  IntakeMech.set_intake_direction(IntakeController::INTAKE_BACKWARD);
-  IntakeMech.set_intake_status(true);
-  pros::delay(8000);
-  IntakeMech.set_intake_status(false);
 
-  //chassis.odom_xyt_set(-47.363_in, 12.803_in, 0_deg);
-  //chassis.pid_odom_set({{-47.586_in, 46.195_in, 270_deg}, fwd, DRIVE_SPEED});
-  //chassis.pid_wait();
-  //chassis.pid_odom_set({{-62.896_in, 46.195_in, 270_deg}, fwd, DRIVE_SPEED});
-  //chassis.pid_wait();
-  // goes to loader to intake 3 blocks
-  // intaking blocks
-  //set_match_loader_status(true);
-  //IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
-  //IntakeMech.set_intake_status(true);
-  //pros::delay(3000);
-  //IntakeMech.set_intake_status(false);
-  // reverse to go to 2 blocks by mid goal
-  //chassis.pid_odom_set({{-23.927_in, 15.02_in, 0_deg}, rev, DRIVE_SPEED});
-  //chassis.pid_wait();
-  // goes foward and intakes the 2 blocks by mid
-  //IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
-  //IntakeMech.set_intake_status(true);
-  // intaking while driving
-  //chassis.pid_odom_set({{-23.893_in, 35.241_in, 270_deg}, fwd, DRIVE_SPEED});
-  //chassis.pid_wait();
-  // stoping intake and moving to next cord
-  //chassis.pid_odom_set({{-39.354_in, 35.74_in, 270_deg}, fwd, DRIVE_SPEED});
-  //chassis.pid_wait();
-  // going to long goal
-  //chassis.pid_odom_set({{-39.109_in, 47.621_in, 90_deg}, fwd, DRIVE_SPEED});
-  //chassis.pid_wait();
-  //chassis.pid_odom_set({{-25.956_in, 47.105_in, 90_deg}, fwd, DRIVE_SPEED});
-  //chassis.pid_wait();
-  // running intake to deposit all blocks into goal
-  // stopping intake
-  // end of code
 }
 
 
-void FiveBlockAutoRedLeft() {
-  // the start of our 15 sec five block auto
+void SevenBlockAutoRedLeft() {
+  // the start of our 15 sec Seven block auto
   // setting bot starting pos
   chassis.odom_xyt_set(-47.621_in, -16.599_in, 180_deg);
   chassis.pid_odom_set({{-47.586_in, -46.195_in, 270_deg}, fwd, DRIVE_SPEED});
@@ -208,8 +170,8 @@ void FiveBlockAutoRedLeft() {
   // end of code
 }
 
-void FiveBlockAutoBlueRight() {
-  // the start of our 15 sec five block auto
+void SevenBlockAutoBlueRight() {
+  // the start of our 15 sec Seven block auto
   // setting bot starting pos
   chassis.odom_xyt_set(47.621_in, 16.599_in, 0_deg);
   chassis.pid_odom_set({{47.586_in, 46.195_in, 90_deg}, fwd, DRIVE_SPEED});
@@ -238,8 +200,8 @@ void FiveBlockAutoBlueRight() {
   // end of code
 }
 
-void FiveBlockAutoBlueLeft() {
-  // the start of our 15 sec five block auto
+void SevenBlockAutoBlueLeft() {
+  // the start of our 15 sec Seven block auto
   // setting bot starting pos
   chassis.odom_xyt_set(47.621_in, -16.599_in, 180_deg);
   chassis.pid_wait();
@@ -311,7 +273,7 @@ void ThreeBlockAutoTopRed() {
   chassis.pid_wait();
   IntakeMech.set_intake_status(false);
   chassis.pid_turn_set(67_deg, 55);
-  LiftMech.set_pistion_status(PistionLiftLib::LIFT_UP);
+  IndexerMech.set_pistion_status(PisitionIndexerLib::LIFT_UP);
   chassis.pid_wait();
   chassis.pid_drive_set(15_in, 55);
   chassis.pid_wait();
@@ -319,7 +281,7 @@ void ThreeBlockAutoTopRed() {
   IntakeMech.set_intake_status(true);
   pros::delay(8000);
   IntakeMech.set_intake_status(false);
-  LiftMech.set_pistion_status(PistionLiftLib::LIFT_DOWN);
+  IndexerMech.set_pistion_status(PisitionIndexerLib::LIFT_DOWN);
 }
 
 void ThreeBlockAutoBottomBlue() {
@@ -349,7 +311,7 @@ void ThreeBlockAutoTopBlue() {
   chassis.pid_wait();
   IntakeMech.set_intake_status(false);
   chassis.pid_turn_set(67_deg, 55);
-  LiftMech.set_pistion_status(PistionLiftLib::LIFT_UP);
+  IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
   chassis.pid_wait();
   chassis.pid_drive_set(15_in, 55);
   chassis.pid_wait();
@@ -357,5 +319,5 @@ void ThreeBlockAutoTopBlue() {
   IntakeMech.set_intake_status(true);
   pros::delay(8000);
   IntakeMech.set_intake_status(false);
-  LiftMech.set_pistion_status(PistionLiftLib::LIFT_DOWN);
+  IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
 }
