@@ -11,7 +11,7 @@
 #include "subsystems.hpp"
 #include "RobotMechs/helpers.hpp"
 #include "RobotMechs/IntakeControllerLib.hpp"
-#include "RobotMechs/PisitionIndexerLib.hpp"
+#include "RobotMechs/PistionIndexerLib.hpp"
 #include "pros/misc.h"
 
 // Helper functions
@@ -47,14 +47,5 @@ void driver_control_intake() {
       IntakeMech.set_intake_status(true);
     } else {
       IntakeMech.set_intake_status(false);
-    }
-}
-
-// This function helps control the match load mech for auto
-void set_indexer_status(bool status) {
-    if(status == true && IndexerPistion.get() == false) {
-        MatchLoadMech.set(true);
-    } else if(status == false && IndexerPistion.get() == true) {
-        MatchLoadMech.set(false);
     }
 }

@@ -55,66 +55,6 @@ void default_constants() {
   chassis.pid_angle_behavior_set(ez::shortest);  // Changes the default behavior for turning, this defaults it to the shortest path there
 }
 
-///
-// Calculate the offsets of your tracking wheels
-///
-void measure_offsets() {
-  // Number of times to test
-  int iterations = 10;
-
-  // Our final offsets
-  double l_offset = 0.0, r_offset = 0.0, b_offset = 0.0, f_offset = 0.0;
-
-  // Reset all trackers if they exist
-  if (chassis.odom_tracker_left != nullptr) chassis.odom_tracker_left->reset();
-  if (chassis.odom_tracker_right != nullptr) chassis.odom_tracker_right->reset();
-  if (chassis.odom_tracker_back != nullptr) chassis.odom_tracker_back->reset();
-  if (chassis.odom_tracker_front != nullptr) chassis.odom_tracker_front->reset();
-  
-  for (int i = 0; i < iterations; i++) {
-    // Reset pid targets and get ready for running an auton
-    chassis.pid_targets_reset();
-    chassis.drive_imu_reset();
-    chassis.drive_sensor_reset();
-    chassis.drive_brake_set(pros::E_MOTOR_BRAKE_HOLD);
-    chassis.odom_xyt_set(0_in, 0_in, 0_deg);
-    double imu_start = chassis.odom_theta_get();
-    double target = i % 2 == 0 ? 90 : 270;  // Switch the turn target every run from 270 to 90
-
-    // Turn to target at half power
-    chassis.pid_turn_set(target, 63, ez::raw);
-    chassis.pid_wait();
-    pros::delay(250);
-
-    // Calculate delta in angle
-    double t_delta = util::to_rad(fabs(util::wrap_angle(chassis.odom_theta_get() - imu_start)));
-
-    // Calculate delta in sensor values that exist
-    double l_delta = chassis.odom_tracker_left != nullptr ? chassis.odom_tracker_left->get() : 0.0;
-    double r_delta = chassis.odom_tracker_right != nullptr ? chassis.odom_tracker_right->get() : 0.0;
-    double b_delta = chassis.odom_tracker_back != nullptr ? chassis.odom_tracker_back->get() : 0.0;
-    double f_delta = chassis.odom_tracker_front != nullptr ? chassis.odom_tracker_front->get() : 0.0;
-
-    // Calculate the radius that the robot traveled
-    l_offset += l_delta / t_delta;
-    r_offset += r_delta / t_delta;
-    b_offset += b_delta / t_delta;
-    f_offset += f_delta / t_delta;
-  }
-
-  // Average all offsets
-  l_offset /= iterations;
-  r_offset /= iterations;
-  b_offset /= iterations;
-  f_offset /= iterations;
-
-  // Set new offsets to trackers that exist
-  if (chassis.odom_tracker_left != nullptr) chassis.odom_tracker_left->distance_to_center_set(l_offset);
-  if (chassis.odom_tracker_right != nullptr) chassis.odom_tracker_right->distance_to_center_set(r_offset);
-  if (chassis.odom_tracker_back != nullptr) chassis.odom_tracker_back->distance_to_center_set(b_offset);
-  if (chassis.odom_tracker_front != nullptr) chassis.odom_tracker_front->distance_to_center_set(f_offset);
-}
-
 // . . .
 // Make your own autonomous functions here!
 // . . .
@@ -136,111 +76,135 @@ void SevenBlockAutoRedRight() {
   chassis.pid_wait();
   chassis.pid_drive_set(30_in, 95);
   chassis.pid_wait();
+  chassis.pid_turn_set(-45_deg, 95);
+  chassis.pid_wait();
+  chassis.pid_drive_set(40_in, 95);
+  chassis.pid_wait();
+  chassis.pid_turn_set(90_deg, 95);
+  chassis.pid_wait();
+  // activating matchloader
+  set_match_loader_status(true);
+  chassis.pid_drive_set(25_in, 95);
+  chassis.pid_wait();
+  // delay before the next action because of matchloader
+  pros::delay(950);
+  chassis.pid_drive_set(-40_in, 95);
+  set_match_loader_status(false);
+  chassis.pid_wait();
+  IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
+  pros::delay(1000);
+  IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
+  IntakeMech.set_intake_status(false);
+  // end of auto
+
+
 
 }
 
 
 void SevenBlockAutoRedLeft() {
   // the start of our 15 sec Seven block auto
-  // setting bot starting pos
-  chassis.odom_xyt_set(-47.621_in, -16.599_in, 180_deg);
-  chassis.pid_odom_set({{-47.586_in, -46.195_in, 270_deg}, fwd, DRIVE_SPEED});
+  // driving the bot the blocks
+  chassis.pid_drive_set(25_in, 95);
   chassis.pid_wait();
-  chassis.pid_odom_set({{-62.896_in, -46.195_in, 270_deg}, fwd, DRIVE_SPEED});
+  // turning on intake
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
+  IntakeMech.set_intake_status(true, 10000);
+  // turning the bot to face the three blocks on the corner of mid goal
+  chassis.pid_turn_set(-90_deg, 95);
   chassis.pid_wait();
-  // goes to loader to intake 3 blocks
-  // intaking blocks
-  // reverse to go to 2 blocks by mid goal
-  chassis.pid_odom_set({{-23.927_in, -15.02_in, 180_deg}, rev, DRIVE_SPEED});
+  chassis.pid_drive_set(30_in, 95);
   chassis.pid_wait();
-  // goes foward and intakes the 2 blocks by mid
-  // intaking while driving
-  chassis.pid_odom_set({{-23.893_in, -35.241_in, 270_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_turn_set(45_deg, 95);
   chassis.pid_wait();
-  // stoping intake and moving to next cord
-  chassis.pid_odom_set({{-39.354_in, -35.74_in, 180_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_drive_set(40_in, 95);
   chassis.pid_wait();
-  // going to long goal
-  chassis.pid_odom_set({{-39.109_in, -47.621_in, 90_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_turn_set(90_deg, 95);
   chassis.pid_wait();
-  chassis.pid_odom_set({{-25.956_in, -47.105_in, 90_deg}, fwd, DRIVE_SPEED});
+  // activating matchloader
+  set_match_loader_status(true);
+  chassis.pid_drive_set(25_in, 95);
   chassis.pid_wait();
-  // running intake to deposit all blocks into goal
-  // stopping intake
-  // end of code
+  // delay before the next action because of matchloader
+  pros::delay(950);
+  chassis.pid_drive_set(-40_in, 95);
+  set_match_loader_status(false);
+  chassis.pid_wait();
+  IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
+  pros::delay(1000);
+  IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
+  IntakeMech.set_intake_status(false);
+  // end of auto
 }
 
 void SevenBlockAutoBlueRight() {
   // the start of our 15 sec Seven block auto
-  // setting bot starting pos
-  chassis.odom_xyt_set(47.621_in, 16.599_in, 0_deg);
-  chassis.pid_odom_set({{47.586_in, 46.195_in, 90_deg}, fwd, DRIVE_SPEED});
+  // driving the bot the blocks
+  chassis.pid_drive_set(25_in, 95);
   chassis.pid_wait();
-  chassis.pid_odom_set({{62.896_in, 46.195_in, 90_deg}, fwd, DRIVE_SPEED});
+  // turning on intake
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
+  IntakeMech.set_intake_status(true, 10000);
+  // turning the bot to face the three blocks on the corner of mid goal
+  chassis.pid_turn_set(90_deg, 95);
   chassis.pid_wait();
-  // goes to loader to intake 3 blocks
-  // intaking blocks
-  // reverse to go to 2 blocks by mid goal
-  chassis.pid_odom_set({{23.927_in, 15.02_in, 0_deg}, rev, DRIVE_SPEED});
+  chassis.pid_drive_set(30_in, 95);
   chassis.pid_wait();
-  // goes foward and intakes the 2 blocks by mid
-  // intaking while driving
-  chassis.pid_odom_set({{23.893_in, 35.241_in, 90_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_turn_set(-45_deg, 95);
   chassis.pid_wait();
-  // stoping intake and moving to next cord
-  chassis.pid_odom_set({{-39.354_in, -35.74_in, 180_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_drive_set(40_in, 95);
   chassis.pid_wait();
-  // going to long goal
-  chassis.pid_odom_set({{39.354_in, 35.74_in, 0_deg}, fwd, DRIVE_SPEED});
+  chassis.pid_turn_set(90_deg, 95);
   chassis.pid_wait();
-  chassis.pid_odom_set({{39.109_in, 47.621_in, 270_deg}, fwd, DRIVE_SPEED});
+  // activating matchloader
+  set_match_loader_status(true);
+  chassis.pid_drive_set(25_in, 95);
   chassis.pid_wait();
-  // running intake to deposit all blocks into goal
-  // stopping intake
-  // end of code
+  // delay before the next action because of matchloader
+  pros::delay(950);
+  chassis.pid_drive_set(-40_in, 95);
+  set_match_loader_status(false);
+  chassis.pid_wait();
+  IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
+  pros::delay(1000);
+  IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
+  IntakeMech.set_intake_status(false);
+  // end of auto
 }
 
 void SevenBlockAutoBlueLeft() {
   // the start of our 15 sec Seven block auto
-  // setting bot starting pos
-  chassis.odom_xyt_set(47.621_in, -16.599_in, 180_deg);
+  // driving the bot the blocks
+  chassis.pid_drive_set(25_in, 95);
   chassis.pid_wait();
-  chassis.pid_odom_set({{47.586_in, -46.195_in}, fwd, 95});
+  // turning on intake
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
+  IntakeMech.set_intake_status(true, 10000);
+  // turning the bot to face the three blocks on the corner of mid goal
+  chassis.pid_turn_set(-90_deg, 95);
   chassis.pid_wait();
-  chassis.pid_turn_set(90_deg, TURN_SPEED);
+  chassis.pid_drive_set(30_in, 95);
   chassis.pid_wait();
-  chassis.pid_odom_set({{62.896_in, -46.195_in}, fwd, 95});
+  chassis.pid_turn_set(45_deg, 95);
   chassis.pid_wait();
-  // goes to loader to intake 3 blocks
-  // intaking blocks
-  // reverse to go to 2 blocks by mid goal
-  chassis.pid_turn_set(45_deg, TURN_SPEED);
+  chassis.pid_drive_set(40_in, 95);
   chassis.pid_wait();
-  chassis.pid_odom_set({{23.927_in, -15.02_in}, rev, 95});
+  chassis.pid_turn_set(90_deg, 95);
   chassis.pid_wait();
-  chassis.pid_turn_set(180_deg, TURN_SPEED);
-  // goes foward and intakes the 2 blocks by mid
-  // intaking while driving
-  chassis.pid_odom_set({{23.893_in, -35.241_in}, fwd, 95});
+  // activating matchloader
+  set_match_loader_status(true);
+  chassis.pid_drive_set(25_in, 95);
   chassis.pid_wait();
-  // stoping intake and moving to next cord
+  // delay before the next action because of matchloader
+  pros::delay(950);
+  chassis.pid_drive_set(-40_in, 95);
+  set_match_loader_status(false);
   chassis.pid_wait();
-  chassis.pid_turn_set(90_deg, TURN_SPEED);
-  chassis.pid_wait();
-  chassis.pid_odom_set({{39.354_in, -35.74_in}, fwd, 95});
-  chassis.pid_wait();
-  chassis.pid_turn_set(180_deg, TURN_SPEED);
-  chassis.pid_wait();
-  // going to long goal
-  chassis.pid_odom_set({{39.109_in, -47.621_in}, fwd, 95});
-  chassis.pid_wait();
-  chassis.pid_turn_set(270_deg, TURN_SPEED);
-  chassis.pid_wait();
-  chassis.pid_odom_set({{25.956_in, -47.105_in}, fwd, 95});
-  chassis.pid_wait();
-  // running intake to deposit all blocks into goal
-  // stopping intake
-  // end of code 
+  IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
+  pros::delay(1000);
+  IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
+  IntakeMech.set_intake_status(false);
+  // end of auto
 }
 
 
@@ -273,7 +237,7 @@ void ThreeBlockAutoTopRed() {
   chassis.pid_wait();
   IntakeMech.set_intake_status(false);
   chassis.pid_turn_set(67_deg, 55);
-  IndexerMech.set_pistion_status(PisitionIndexerLib::LIFT_UP);
+  IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
   chassis.pid_wait();
   chassis.pid_drive_set(15_in, 55);
   chassis.pid_wait();
@@ -281,7 +245,7 @@ void ThreeBlockAutoTopRed() {
   IntakeMech.set_intake_status(true);
   pros::delay(8000);
   IntakeMech.set_intake_status(false);
-  IndexerMech.set_pistion_status(PisitionIndexerLib::LIFT_DOWN);
+  IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
 }
 
 void ThreeBlockAutoBottomBlue() {

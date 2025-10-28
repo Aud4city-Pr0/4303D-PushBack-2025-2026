@@ -1,7 +1,6 @@
 #pragma once
 
 #include "EZ-Template/api.hpp"
-#include "EZ-Template/tracking_wheel.hpp"
 #include "api.h"
 #include "RobotMechs/IntakeControllerLib.hpp"
 #include "RobotMechs/PistionIndexerLib.hpp"
