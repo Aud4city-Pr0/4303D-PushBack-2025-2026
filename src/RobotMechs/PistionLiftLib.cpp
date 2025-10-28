@@ -17,9 +17,9 @@
 // this function controlls the pistion state to raise and lower it
 void PistionLiftLib::PistionLift::set_pistion_status(PistionState StateToSet) {
     if (StateToSet == PistionState::LIFT_DOWN) {
-        this->LiftActuator->set(true);
-    } else if (StateToSet == PistionState::LIFT_UP) {
         this->LiftActuator->set(false);
+    } else if (StateToSet == PistionState::LIFT_UP) {
+        this->LiftActuator->set(true);
     }
     PistionLiftLib::CurrentState = StateToSet;
 }

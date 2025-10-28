@@ -41,7 +41,7 @@ void initialize() {
   pros::delay(500); // Stop the user from doing anything while legacy ports configure
 
   // setting odom
-  chassis.odom_tracker_back_set(&vertical_tracker);
+  //chassis.odom_tracker_back_set(&vertical_tracker);
 
   // Look at your horizontal tracking wheel and decide if it's in front of the midline of your robot or behind it
   //  - change `back` to `front` if the tracking wheel is in front of the midline
@@ -65,14 +65,16 @@ void initialize() {
   // chassis.opcontrol_curve_buttons_right_set(pros::E_CONTROLLER_DIGITAL_Y, pros::E_CONTROLLER_DIGITAL_A);
 
   // Autonomous Selector using LLEMU
-  ez::as::auton_selector.autons_add({
-      {"(ONLY USE FOR DEBUGGING!) Measure Offsets\n\nThis will turn the robot a bunch of times and calculate your offsets for your tracking wheels.", measure_offsets},
+  ez::as::auton_selector.autons_add({ 
       {"Five Block Auto Right (RED)\n\nGets five blocks in right long goal.", FiveBlockAutoRedRight},
       {"Five Block Auto Left (RED)\n\nGets five blocks in the left long goal.", FiveBlockAutoRedLeft},
       {"Five Block Auto Right (BLUE)\n\nGets five blocks in right long goal.", FiveBlockAutoBlueRight},
       {"Five Block Auto Left (BLUE)\n\nGets five blocks in the left long goal.", FiveBlockAutoBlueLeft},
       {"Three Block Auto Bottom (RED)\n\nGets three blocks in bottom middle goal.", ThreeBlockAutoBottomRed},
-      {"Three Block Auto Top (RED)\n\nGets three blocks in bottom middle goal.", ThreeBlockAutoTopRed}
+      {"Three Block Auto Top (RED)\n\nGets three blocks in bottom middle goal.", ThreeBlockAutoTopBlue},
+      {"Three Block Auto Bottom (BLUE)\n\nGets three blocks in bottom middle goal.", ThreeBlockAutoBottomRed},
+      {"Three Block Auto Top (BLUE)\n\nGets three blocks in bottom middle goal.", ThreeBlockAutoTopBlue},
+      {"(ONLY USE FOR DEBUGGING!) Measure Offsets\n\nThis will turn the robot a bunch of times and calculate your offsets for your tracking wheels.", measure_offsets}
   });
 
   // Initialize chassis and auton selector`
