@@ -70,8 +70,7 @@ void initialize() {
       {"Three Block Auto Bottom (RED)\n\nGets three blocks in bottom middle goal.", ThreeBlockAutoBottomRed},
       {"Three Block Auto Top (RED)\n\nGets three blocks in bottom middle goal.", ThreeBlockAutoTopBlue},
       {"Three Block Auto Bottom (BLUE)\n\nGets three blocks in bottom middle goal.", ThreeBlockAutoBottomRed},
-      {"Three Block Auto Top (BLUE)\n\nGets three blocks in bottom middle goal.", ThreeBlockAutoTopBlue},
-      {"(ONLY USE FOR DEBUGGING!) Measure Offsets\n\nThis will turn the robot a bunch of times and calculate your offsets for your tracking wheels.", measure_offsets}
+      {"Three Block Auto Top (BLUE)\n\nGets three blocks in bottom middle goal.", ThreeBlockAutoTopBlue}
   });
 
   // Initialize chassis and auton selector`

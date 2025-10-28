@@ -9,4 +9,3 @@ void ThreeBlockAutoBottomRed();
 void ThreeBlockAutoBottomBlue();
 void ThreeBlockAutoTopRed();
 void ThreeBlockAutoTopBlue();
-void measure_offsets();

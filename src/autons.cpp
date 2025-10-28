@@ -66,29 +66,29 @@ void default_constants() {
 void SevenBlockAutoRedRight() {
   // the start of our 15 sec Seven block auto
   // driving the bot the blocks
-  chassis.pid_drive_set(25_in, 95);
+  chassis.pid_drive_set(10_in, 95);
   chassis.pid_wait();
   // turning on intake
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
   IntakeMech.set_intake_status(true, 10000);
   // turning the bot to face the three blocks on the corner of mid goal
-  chassis.pid_turn_set(90_deg, 95);
+  chassis.pid_turn_set(-90_deg, 95);
   chassis.pid_wait();
-  chassis.pid_drive_set(30_in, 95);
+  chassis.pid_drive_set(25_in, 95);
   chassis.pid_wait();
-  chassis.pid_turn_set(-45_deg, 95);
+  chassis.pid_turn_set(45_deg, 95);
   chassis.pid_wait();
-  chassis.pid_drive_set(40_in, 95);
+  chassis.pid_drive_set(37_in, 95);
   chassis.pid_wait();
   chassis.pid_turn_set(90_deg, 95);
   chassis.pid_wait();
   // activating matchloader
   set_match_loader_status(true);
-  chassis.pid_drive_set(25_in, 95);
+  chassis.pid_drive_set(15_in, 95);
   chassis.pid_wait();
   // delay before the next action because of matchloader
   pros::delay(950);
-  chassis.pid_drive_set(-40_in, 95);
+  chassis.pid_drive_set(-35_in, 95);
   set_match_loader_status(false);
   chassis.pid_wait();
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
@@ -98,36 +98,35 @@ void SevenBlockAutoRedRight() {
   // end of auto
 
 
-
 }
 
 
 void SevenBlockAutoRedLeft() {
   // the start of our 15 sec Seven block auto
   // driving the bot the blocks
-  chassis.pid_drive_set(25_in, 95);
+  chassis.pid_drive_set(10_in, 95);
   chassis.pid_wait();
   // turning on intake
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
   IntakeMech.set_intake_status(true, 10000);
   // turning the bot to face the three blocks on the corner of mid goal
-  chassis.pid_turn_set(-90_deg, 95);
-  chassis.pid_wait();
-  chassis.pid_drive_set(30_in, 95);
-  chassis.pid_wait();
-  chassis.pid_turn_set(45_deg, 95);
-  chassis.pid_wait();
-  chassis.pid_drive_set(40_in, 95);
-  chassis.pid_wait();
   chassis.pid_turn_set(90_deg, 95);
+  chassis.pid_wait();
+  chassis.pid_drive_set(25_in, 95);
+  chassis.pid_wait();
+  chassis.pid_turn_set(-45_deg, 95);
+  chassis.pid_wait();
+  chassis.pid_drive_set(37_in, 95);
+  chassis.pid_wait();
+  chassis.pid_turn_set(270_deg, 95);
   chassis.pid_wait();
   // activating matchloader
   set_match_loader_status(true);
-  chassis.pid_drive_set(25_in, 95);
+  chassis.pid_drive_set(15_in, 95);
   chassis.pid_wait();
   // delay before the next action because of matchloader
   pros::delay(950);
-  chassis.pid_drive_set(-40_in, 95);
+  chassis.pid_drive_set(-35_in, 95);
   set_match_loader_status(false);
   chassis.pid_wait();
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
@@ -140,29 +139,29 @@ void SevenBlockAutoRedLeft() {
 void SevenBlockAutoBlueRight() {
   // the start of our 15 sec Seven block auto
   // driving the bot the blocks
-  chassis.pid_drive_set(25_in, 95);
+  chassis.pid_drive_set(10_in, 95);
   chassis.pid_wait();
   // turning on intake
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
   IntakeMech.set_intake_status(true, 10000);
   // turning the bot to face the three blocks on the corner of mid goal
-  chassis.pid_turn_set(90_deg, 95);
+  chassis.pid_turn_set(-90_deg, 95);
   chassis.pid_wait();
-  chassis.pid_drive_set(30_in, 95);
+  chassis.pid_drive_set(25_in, 95);
   chassis.pid_wait();
-  chassis.pid_turn_set(-45_deg, 95);
+  chassis.pid_turn_set(45_deg, 95);
   chassis.pid_wait();
-  chassis.pid_drive_set(40_in, 95);
+  chassis.pid_drive_set(37_in, 95);
   chassis.pid_wait();
   chassis.pid_turn_set(90_deg, 95);
   chassis.pid_wait();
   // activating matchloader
   set_match_loader_status(true);
-  chassis.pid_drive_set(25_in, 95);
+  chassis.pid_drive_set(15_in, 95);
   chassis.pid_wait();
   // delay before the next action because of matchloader
   pros::delay(950);
-  chassis.pid_drive_set(-40_in, 95);
+  chassis.pid_drive_set(-35_in, 95);
   set_match_loader_status(false);
   chassis.pid_wait();
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
@@ -175,29 +174,29 @@ void SevenBlockAutoBlueRight() {
 void SevenBlockAutoBlueLeft() {
   // the start of our 15 sec Seven block auto
   // driving the bot the blocks
-  chassis.pid_drive_set(25_in, 95);
+  chassis.pid_drive_set(10_in, 95);
   chassis.pid_wait();
   // turning on intake
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
   IntakeMech.set_intake_status(true, 10000);
   // turning the bot to face the three blocks on the corner of mid goal
-  chassis.pid_turn_set(-90_deg, 95);
-  chassis.pid_wait();
-  chassis.pid_drive_set(30_in, 95);
-  chassis.pid_wait();
-  chassis.pid_turn_set(45_deg, 95);
-  chassis.pid_wait();
-  chassis.pid_drive_set(40_in, 95);
-  chassis.pid_wait();
   chassis.pid_turn_set(90_deg, 95);
+  chassis.pid_wait();
+  chassis.pid_drive_set(25_in, 95);
+  chassis.pid_wait();
+  chassis.pid_turn_set(-45_deg, 95);
+  chassis.pid_wait();
+  chassis.pid_drive_set(37_in, 95);
+  chassis.pid_wait();
+  chassis.pid_turn_set(270_deg, 95);
   chassis.pid_wait();
   // activating matchloader
   set_match_loader_status(true);
-  chassis.pid_drive_set(25_in, 95);
+  chassis.pid_drive_set(15_in, 95);
   chassis.pid_wait();
   // delay before the next action because of matchloader
   pros::delay(950);
-  chassis.pid_drive_set(-40_in, 95);
+  chassis.pid_drive_set(-35_in, 95);
   set_match_loader_status(false);
   chassis.pid_wait();
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
