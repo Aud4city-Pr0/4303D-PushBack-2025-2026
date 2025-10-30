@@ -312,6 +312,7 @@ void SkillsAuto() {
   chassis.pid_drive_set(-10_in, 95);
   chassis.pid_wait();
   chassis.pid_turn_set(180_deg, 95);
+  chassis.pid_wait();
 
 
 }
