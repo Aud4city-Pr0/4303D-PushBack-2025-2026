@@ -15,5 +15,5 @@ void set_match_loader_status(bool status);
 void set_indexer_status(bool status);
 // This function contains intake code for driver
 void driver_control_intake();
-// This function contains pistion lift code for driver
+// This function contains pistion indexer code for driver
 void driver_control_indexer();
