@@ -27,7 +27,7 @@ void set_match_loader_status(bool status) {
 }
 
 // This is driver control code for our lift
-void driver_control_lift() {
+void driver_control_indexer() {
     // Pistion lift code
     if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L1) && IndexerMech.get_pistion_status() == 2) {
       IndexerMech.set_pistion_status(PistionIndexerLib::PistionState::INDEXER_OPEN);

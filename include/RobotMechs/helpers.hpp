@@ -16,4 +16,4 @@ void set_indexer_status(bool status);
 // This function contains intake code for driver
 void driver_control_intake();
 // This function contains pistion lift code for driver
-void driver_control_lift();
+void driver_control_indexer();
