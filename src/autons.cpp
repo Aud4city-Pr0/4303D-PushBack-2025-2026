@@ -284,3 +284,34 @@ void ThreeBlockAutoTopBlue() {
   IntakeMech.set_intake_status(false);
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
 }
+
+// Our skills auto
+void SkillsAuto() {
+  // our skills auto
+  chassis.pid_drive_set(10_in, 95);
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
+  IntakeMech.set_intake_status(true, 10000);
+  chassis.pid_wait();
+  chassis.pid_turn_set(90_deg, 95);
+  chassis.pid_wait();
+  chassis.pid_drive_set(23_in, 95);
+  chassis.pid_wait();
+  // intaking the four balls while turning
+  chassis.pid_turn_set(-45_deg, 95);
+  chassis.pid_wait();
+  // turn off intake
+  IntakeMech.set_intake_status(false);
+  chassis.pid_drive_set(15_in, 95);
+  chassis.pid_wait();
+  // outaking 2 of the 4 balls into middle goal
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_BACKWARD);
+  IntakeMech.set_intake_status(true, 10000);
+  // waiting until all balls are out
+  pros::delay(990);
+  IntakeMech.set_intake_status(false);
+  chassis.pid_drive_set(-10_in, 95);
+  chassis.pid_wait();
+  chassis.pid_turn_set(180_deg, 95);
+
+
+}
