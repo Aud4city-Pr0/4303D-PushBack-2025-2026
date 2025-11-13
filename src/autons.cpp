@@ -305,14 +305,35 @@ void SkillsAuto() {
   chassis.pid_wait();
   // outaking 2 of the 4 balls into middle goal
   IntakeMech.set_intake_direction(IntakeController::INTAKE_BACKWARD);
+  IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
   IntakeMech.set_intake_status(true, 10000);
   // waiting until all balls are out
   pros::delay(990);
   IntakeMech.set_intake_status(false);
+  IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
   chassis.pid_drive_set(-10_in, 95);
   chassis.pid_wait();
-  chassis.pid_turn_set(180_deg, 95);
+  chassis.pid_turn_set(45_deg, 95);
   chassis.pid_wait();
+  chassis.pid_drive_set(37_in, 95);
+  chassis.pid_wait();
+  chassis.pid_turn_set(270_deg, TURN_SPEED);
+  chassis.pid_wait();
+  // setting up for match loding
+  set_match_loader_status(true);
+  // making sure that match loader is properly deployed
+  pros::delay(120);
+  chassis.pid_speed_max_set(75);
+  chassis.pid_wait();
+  chassis.pid_drive_set(15_in, 75);
+  chassis.pid_wait();
+  // intaking all of the balls
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
+  IntakeMech.set_intake_status(true, 12000);
+  // waiting to finish intake all of the balls
+  pros::delay(950);
+  IntakeMech.set_intake_status(false, 12000);
+   
 
 
 }
