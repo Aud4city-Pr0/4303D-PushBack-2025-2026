@@ -257,7 +257,7 @@ void opcontrol() {
     // intake controll code
     driver_control_intake();
     
-    // Pistion lift code
+    // Pistion indexer 
     driver_control_indexer();
     
 
