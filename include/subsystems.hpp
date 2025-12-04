@@ -13,7 +13,7 @@ extern Drive chassis;
 
 // motor defintions for mech classes
 inline pros::Motor BlockIntakeMotorA(-4, pros::v5::MotorGears::blue);
-inline pros::Motor BlockIntakeMotorB(5, pros::v5::MotorGears::green);
+inline pros::Motor BlockIntakeMotorB(-5, pros::v5::MotorGears::green);
 inline pros::Motor BlockIntakeMotorC(6, pros::v5::MotorGears::green);
 
 // our penmatics
