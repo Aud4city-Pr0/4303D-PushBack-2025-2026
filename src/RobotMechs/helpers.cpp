@@ -8,11 +8,16 @@
 // File includes
 // --------------
 #include "EZ-Template/piston.hpp"
+#include "EZ-Template/util.hpp"
 #include "subsystems.hpp"
 #include "RobotMechs/helpers.hpp"
 #include "RobotMechs/IntakeControllerLib.hpp"
 #include "RobotMechs/PistionIndexerLib.hpp"
 #include "pros/misc.h"
+
+// Helper vars
+// ------------
+bool Scorestatus = false;
 
 // Helper functions
 // ----------------
@@ -48,4 +53,17 @@ void driver_control_intake() {
     } else {
       IntakeMech.set_intake_status(false);
     }
+}
+
+void dirver_control_score_toggle() {
+  // scoring toggle controll
+  if(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1) && master.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && Scorestatus == false) {
+    // scoring on top
+    IntakeMech.set_scoring(IntakeController::Scoring::TOP_GOAL);
+    Scorestatus = true;
+  } else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1) && master.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && Scorestatus == true) {
+    // scoring on mid
+    IntakeMech.set_scoring(IntakeController::Scoring::MID_GOAL);
+    Scorestatus = false;
+  }
 }

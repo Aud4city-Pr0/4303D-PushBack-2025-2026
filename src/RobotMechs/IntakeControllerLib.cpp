@@ -8,6 +8,7 @@
 
 // File includes
 //--------------
+
 #include "pros/motors.h"
 #include "RobotMechs/IntakeControllerLib.hpp"
 
@@ -24,7 +25,7 @@ void IntakeController::Intake::set_intake_direction(IntakeController::Direction 
     } else if(Dir == IntakeController::INTAKE_BACKWARD) {
         this->IntakeMotorObjectA->set_reversed(false);
         this->IntakeMotorObjectB->set_reversed(false);
-        this->IntakeMotorObjectC->set_reversed(true);
+        this->IntakeMotorObjectC->set_reversed(false);
     }
 }
 
@@ -51,5 +52,14 @@ void IntakeController::Intake::set_intake_status(bool IsRunning, const int Intak
         this->IntakeMotorObjectA->brake();
         this->IntakeMotorObjectB->brake();
         this->IntakeMotorObjectC->brake();
+    }
+}
+
+// This function controlls the scoring
+void IntakeController::Intake::set_scoring(IntakeController::Scoring ScoreType) {
+    if (ScoreType == Scoring::TOP_GOAL) {
+        this->IntakeMotorObjectC->set_reversed(false);
+    } else if(ScoreType == Scoring::MID_GOAL) {
+        this->IntakeMotorObjectC->set_reversed(true);
     }
 }

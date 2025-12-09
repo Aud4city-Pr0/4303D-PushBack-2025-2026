@@ -19,6 +19,13 @@ namespace IntakeController {
       INTAKE_FORWARD = 0,
       INTAKE_BACKWARD = 1,
     };
+
+    // Scoring enum
+    enum Scoring {
+      TOP_GOAL = 0,
+      MID_GOAL = 1
+    };
+
     class Intake
     {
         public:
@@ -37,5 +44,6 @@ namespace IntakeController {
         void set_intake_status(bool IsRunning);
         void set_intake_status(bool IsRunning, const int IntakeSpeed);
         void set_intake_direction(Direction IntakeDir);
+        void set_scoring(Scoring ScoreType);
     };
 };
