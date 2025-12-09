@@ -57,13 +57,20 @@ void driver_control_intake() {
 
 void dirver_control_score_toggle() {
   // scoring toggle controll
-  if(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1) && master.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && Scorestatus == false) {
-    // scoring on top
-    IntakeMech.set_scoring(IntakeController::Scoring::TOP_GOAL);
-    Scorestatus = true;
-  } else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1) && master.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && Scorestatus == true) {
-    // scoring on mid
-    IntakeMech.set_scoring(IntakeController::Scoring::MID_GOAL);
-    Scorestatus = false;
+  static bool lastY = false; // remembers last loop's Y state
+  bool currentY = master.get_digital(pros::E_CONTROLLER_DIGITAL_Y);
+  bool r1Held = master.get_digital(pros::E_CONTROLLER_DIGITAL_R1);
+
+  // Detect button press (NOT hold)
+  if (currentY && !lastY && r1Held) {
+    Scorestatus = !Scorestatus; // toggle state
+
+    if (Scorestatus) {
+      IntakeMech.set_scoring(IntakeController::Scoring::TOP_GOAL);
+    } else {
+      IntakeMech.set_scoring(IntakeController::Scoring::MID_GOAL);
+    }
   }
+
+  lastY = currentY;
 }

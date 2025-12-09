@@ -20,7 +20,7 @@ void IntakeController::Intake::set_intake_direction(IntakeController::Direction 
     if(Dir == IntakeController::INTAKE_FORWARD) {
         this->IntakeMotorObjectA->set_reversed(true);
         this->IntakeMotorObjectB->set_reversed(true);
-        this->IntakeMotorObjectC->set_reversed(true);
+        //this->IntakeMotorObjectC->set_reversed(true);
 
     } else if(Dir == IntakeController::INTAKE_BACKWARD) {
         this->IntakeMotorObjectA->set_reversed(false);
