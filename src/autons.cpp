@@ -91,6 +91,7 @@ void SevenBlockAutoRedRight() {
   chassis.pid_drive_set(-35_in, 95);
   set_match_loader_status(false);
   chassis.pid_wait();
+  IntakeMech.set_intake_status(IntakeController::Scoring::TOP_GOAL);
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
   pros::delay(1000);
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
@@ -129,6 +130,7 @@ void SevenBlockAutoRedLeft() {
   chassis.pid_drive_set(-35_in, 95);
   set_match_loader_status(false);
   chassis.pid_wait();
+  IntakeMech.set_intake_status(IntakeController::Scoring::TOP_GOAL);
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
   pros::delay(1000);
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
@@ -164,6 +166,7 @@ void SevenBlockAutoBlueRight() {
   chassis.pid_drive_set(-35_in, 95);
   set_match_loader_status(false);
   chassis.pid_wait();
+  IntakeMech.set_intake_status(IntakeController::Scoring::TOP_GOAL);
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
   pros::delay(1000);
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
@@ -199,6 +202,7 @@ void SevenBlockAutoBlueLeft() {
   chassis.pid_drive_set(-35_in, 95);
   set_match_loader_status(false);
   chassis.pid_wait();
+  IntakeMech.set_intake_status(IntakeController::Scoring::TOP_GOAL);
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
   pros::delay(1000);
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
@@ -240,8 +244,9 @@ void ThreeBlockAutoTopRed() {
   chassis.pid_wait();
   chassis.pid_drive_set(15_in, 55);
   chassis.pid_wait();
-  IntakeMech.set_intake_direction(IntakeController::INTAKE_BACKWARD);
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
   IntakeMech.set_intake_status(true);
+  IntakeMech.set_intake_status(IntakeController::Scoring::TOP_GOAL);
   pros::delay(8000);
   IntakeMech.set_intake_status(false);
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
@@ -278,8 +283,9 @@ void ThreeBlockAutoTopBlue() {
   chassis.pid_wait();
   chassis.pid_drive_set(15_in, 55);
   chassis.pid_wait();
-  IntakeMech.set_intake_direction(IntakeController::INTAKE_BACKWARD);
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
   IntakeMech.set_intake_status(true);
+  IntakeMech.set_intake_status(IntakeController::Scoring::MID_GOAL);
   pros::delay(8000);
   IntakeMech.set_intake_status(false);
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
