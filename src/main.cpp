@@ -69,7 +69,7 @@ void initialize() {
       {"Seven Block Auto Left (BLUE)\n\nGets Seven blocks in the left long goal.", SevenBlockAutoBlueLeft},
       {"Three Block Auto Bottom (RED)\n\nGets three blocks in bottom middle goal.", ThreeBlockAutoBottomRed},
       {"Three Block Auto Top (RED)\n\nGets three blocks in bottom middle goal.", ThreeBlockAutoTopBlue},
-      {"Three Block Auto Bottom (BLUE)\n\nGets three blocks in bottom middle goal.", ThreeBlockAutoBottomRed},
+      {"Three Block Auto Bottom (BLUE)\n\nGets three blocks in bottom middle goal.", ThreeBlockAutoBottomBlue},
       {"Three Block Auto Top (BLUE)\n\nGets three blocks in bottom middle goal.", ThreeBlockAutoTopBlue},
       {"Skills Auto\n\nThis is our auton for skills this year.", SkillsAuto}
   });
