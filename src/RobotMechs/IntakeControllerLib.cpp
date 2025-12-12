@@ -24,7 +24,7 @@ void IntakeController::Intake::set_intake_direction(IntakeController::Direction 
     } else if(Dir == IntakeController::INTAKE_BACKWARD) {
         this->IntakeMotorObjectA->set_reversed(false);
         this->IntakeMotorObjectB->set_reversed(false);
-        this->IntakeMotorObjectC->set_reversed(true);
+        this->IntakeMotorObjectC->set_reversed(false);
     }
 }
 

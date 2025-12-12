@@ -215,12 +215,12 @@ void SevenBlockAutoBlueLeft() {
 void ThreeBlockAutoBottomRed() {
   // the start of our 15 second three block auto for bottom of the middle goal
   // setting bot pos
-  chassis.pid_drive_set(29_in, 55);
+  chassis.pid_drive_set(30_in, 55);
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
   IntakeMech.set_intake_status(true);
   chassis.pid_wait();
+  chassis.pid_turn_set(-63_deg, 55);
   IntakeMech.set_intake_status(false);
-  chassis.pid_turn_set(-67_deg, 55);
   chassis.pid_wait();
   chassis.pid_drive_set(18_in, 55);
   chassis.pid_wait();
@@ -254,12 +254,12 @@ void ThreeBlockAutoTopRed() {
 
 void ThreeBlockAutoBottomBlue() {
   // the start of our 15 second three block auto for bottom of the middle goal
-  chassis.pid_drive_set(29_in, 55);
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
   IntakeMech.set_intake_status(true);
+  chassis.pid_drive_set(29_in, 55);
   chassis.pid_wait();
+  chassis.pid_turn_set(-71_deg, 55);
   IntakeMech.set_intake_status(false);
-  chassis.pid_turn_set(-67_deg, 55);
   chassis.pid_wait();
   chassis.pid_drive_set(18_in, 55);
   chassis.pid_wait();
