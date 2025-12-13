@@ -66,7 +66,7 @@ void default_constants() {
 void SevenBlockAutoRedRight() {
   // the start of our 15 sec Seven block auto
   // driving the bot the blocks
-  chassis.pid_drive_set(10_in, 95);
+  chassis.pid_drive_set(7_in, 95);
   chassis.pid_wait();
   // turning on intake
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
@@ -74,11 +74,11 @@ void SevenBlockAutoRedRight() {
   // turning the bot to face the three blocks on the corner of mid goal
   chassis.pid_turn_set(-90_deg, 95);
   chassis.pid_wait();
-  chassis.pid_drive_set(25_in, 95);
+  chassis.pid_drive_set(12_in, 95);
   chassis.pid_wait();
   chassis.pid_turn_set(45_deg, 95);
   chassis.pid_wait();
-  chassis.pid_drive_set(37_in, 95);
+  chassis.pid_drive_set(15_in, 95);
   chassis.pid_wait();
   chassis.pid_turn_set(90_deg, 95);
   chassis.pid_wait();
@@ -105,7 +105,7 @@ void SevenBlockAutoRedRight() {
 void SevenBlockAutoRedLeft() {
   // the start of our 15 sec Seven block auto
   // driving the bot the blocks
-  chassis.pid_drive_set(10_in, 95);
+  chassis.pid_drive_set(7_in, 95);
   chassis.pid_wait();
   // turning on intake
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
@@ -113,11 +113,11 @@ void SevenBlockAutoRedLeft() {
   // turning the bot to face the three blocks on the corner of mid goal
   chassis.pid_turn_set(90_deg, 95);
   chassis.pid_wait();
-  chassis.pid_drive_set(25_in, 95);
+  chassis.pid_drive_set(12_in, 95);
   chassis.pid_wait();
   chassis.pid_turn_set(-45_deg, 95);
   chassis.pid_wait();
-  chassis.pid_drive_set(37_in, 95);
+  chassis.pid_drive_set(15_in, 95);
   chassis.pid_wait();
   chassis.pid_turn_set(270_deg, 95);
   chassis.pid_wait();
@@ -141,21 +141,21 @@ void SevenBlockAutoRedLeft() {
 void SevenBlockAutoBlueRight() {
   // the start of our 15 sec Seven block auto
   // driving the bot the blocks
-  chassis.pid_drive_set(10_in, 95);
+  chassis.pid_drive_set(7_in, 95);
   chassis.pid_wait();
   // turning on intake
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
   IntakeMech.set_intake_status(true, 10000);
   // turning the bot to face the three blocks on the corner of mid goal
-  chassis.pid_turn_set(-90_deg, 95);
-  chassis.pid_wait();
-  chassis.pid_drive_set(25_in, 95);
-  chassis.pid_wait();
-  chassis.pid_turn_set(45_deg, 95);
-  chassis.pid_wait();
-  chassis.pid_drive_set(37_in, 95);
-  chassis.pid_wait();
   chassis.pid_turn_set(90_deg, 95);
+  chassis.pid_wait();
+  chassis.pid_drive_set(12_in, 95);
+  chassis.pid_wait();
+  chassis.pid_turn_set(-45_deg, 95);
+  chassis.pid_wait();
+  chassis.pid_drive_set(15_in, 95);
+  chassis.pid_wait();
+  chassis.pid_turn_set(270_deg, 95);
   chassis.pid_wait();
   // activating matchloader
   set_match_loader_status(true);
@@ -177,19 +177,19 @@ void SevenBlockAutoBlueRight() {
 void SevenBlockAutoBlueLeft() {
   // the start of our 15 sec Seven block auto
   // driving the bot the blocks
-  chassis.pid_drive_set(10_in, 95);
+  chassis.pid_drive_set(7_in, 95);
   chassis.pid_wait();
   // turning on intake
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
   IntakeMech.set_intake_status(true, 10000);
   // turning the bot to face the three blocks on the corner of mid goal
-  chassis.pid_turn_set(90_deg, 95);
+  chassis.pid_turn_set(-90_deg, 95);
   chassis.pid_wait();
-  chassis.pid_drive_set(25_in, 95);
+  chassis.pid_drive_set(12_in, 95);
   chassis.pid_wait();
   chassis.pid_turn_set(-45_deg, 95);
   chassis.pid_wait();
-  chassis.pid_drive_set(37_in, 95);
+  chassis.pid_drive_set(15_in, 95);
   chassis.pid_wait();
   chassis.pid_turn_set(270_deg, 95);
   chassis.pid_wait();
@@ -222,7 +222,7 @@ void ThreeBlockAutoBottomRed() {
   chassis.pid_turn_set(-67_deg, 55);
   IntakeMech.set_intake_status(false);
   chassis.pid_wait();
-  chassis.pid_drive_set(18_in, 55);
+  chassis.pid_drive_set(16_in, 55);
   chassis.pid_wait();
   IntakeMech.set_intake_direction(IntakeController::INTAKE_BACKWARD);
   IntakeMech.set_intake_status(true);
@@ -240,16 +240,14 @@ void ThreeBlockAutoTopRed() {
   chassis.pid_wait();
   IntakeMech.set_intake_status(false);
   chassis.pid_turn_set(67_deg, 55);
-  IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
   chassis.pid_wait();
   chassis.pid_drive_set(15_in, 55);
   chassis.pid_wait();
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
   IntakeMech.set_intake_status(true);
-  IntakeMech.set_intake_status(IntakeController::Scoring::TOP_GOAL);
+  IntakeMech.set_scoring(IntakeController::Scoring::MID_GOAL);
   pros::delay(8000);
   IntakeMech.set_intake_status(false);
-  IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
 }
 
 void ThreeBlockAutoBottomBlue() {
@@ -258,10 +256,10 @@ void ThreeBlockAutoBottomBlue() {
   IntakeMech.set_intake_status(true);
   chassis.pid_drive_set(27_in, 55);
   chassis.pid_wait();
-  chassis.pid_turn_set(-67_deg, 55);
+  chassis.pid_turn_set(-68.5_deg, 55);
   IntakeMech.set_intake_status(false);
   chassis.pid_wait();
-  chassis.pid_drive_set(18_in, 55);
+  chassis.pid_drive_set(16_in, 55);
   chassis.pid_wait();
   IntakeMech.set_intake_direction(IntakeController::INTAKE_BACKWARD);
   IntakeMech.set_intake_status(true);
@@ -279,16 +277,14 @@ void ThreeBlockAutoTopBlue() {
   chassis.pid_wait();
   IntakeMech.set_intake_status(false);
   chassis.pid_turn_set(67_deg, 55);
-  IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
   chassis.pid_wait();
   chassis.pid_drive_set(15_in, 55);
   chassis.pid_wait();
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
   IntakeMech.set_intake_status(true);
-  IntakeMech.set_intake_status(IntakeController::Scoring::MID_GOAL);
+  IntakeMech.set_scoring(IntakeController::Scoring::MID_GOAL);
   pros::delay(8000);
   IntakeMech.set_intake_status(false);
-  IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
 }
 
 // Our skills auto
