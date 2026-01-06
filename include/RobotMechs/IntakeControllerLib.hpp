@@ -30,10 +30,12 @@ namespace IntakeController {
     {
         public:
         pros::Motor* IntakeMotorObjectA;
+        pros::Motor* IntakeMotorObjectB;
         int DefaultIntakeSpeed;
         // This is the intake classes constructor function, it takes in a motor and an int that ranges from 0-127.
-        Intake(pros::Motor &IntakeMotorA, const int IntakeSpeed) {
+        Intake(pros::Motor &IntakeMotorA, pros::Motor &IntakeMotorB, const int IntakeSpeed) {
           IntakeMotorObjectA = &IntakeMotorA;
+          IntakeMotorObjectB = &IntakeMotorB;
           DefaultIntakeSpeed = IntakeSpeed;
         }
         // The intake functions

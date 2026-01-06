@@ -245,6 +245,8 @@ void ThreeBlockAutoTopRed() {
   IntakeMech.set_intake_status(false);
   chassis.pid_turn_set(67_deg, 55);
   chassis.pid_wait();
+  chassis.pid_turn_set(180_deg, 55);
+  chassis.pid_wait();
   chassis.pid_drive_set(15_in, 55);
   chassis.pid_wait();
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
@@ -282,6 +284,8 @@ void ThreeBlockAutoTopBlue() {
   IntakeMech.set_intake_status(false);
   chassis.pid_turn_set(67_deg, 55);
   chassis.pid_wait();
+  chassis.pid_turn_set(180_deg, 55);
+  chassis.pid_wait();
   chassis.pid_drive_set(15_in, 55);
   chassis.pid_wait();
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
@@ -311,12 +315,10 @@ void SkillsAuto() {
   chassis.pid_wait();
   // outaking 2 of the 4 balls into middle goal
   IntakeMech.set_intake_direction(IntakeController::INTAKE_BACKWARD);
-  IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
   IntakeMech.set_intake_status(true, 10000);
   // waiting until all balls are out
   pros::delay(990);
   IntakeMech.set_intake_status(false);
-  IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
   chassis.pid_drive_set(-10_in, 95);
   chassis.pid_wait();
   chassis.pid_turn_set(45_deg, 95);
@@ -339,7 +341,32 @@ void SkillsAuto() {
   // waiting to finish intake all of the balls
   pros::delay(950);
   IntakeMech.set_intake_status(false, 12000);
-   
+  chassis.pid_drive_set(-35_in, 75);
+  chassis.pid_wait();
+  // running intake and scoring blocks
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
+  IntakeMech.set_intake_status(true, 12000);
+  pros::delay(550);
+  // turning off intake and driving to other long goal
+  IntakeMech.set_intake_status(false);
+  chassis.pid_drive_set(15_in, 75);
+  chassis.pid_wait();
+  chassis.pid_turn_set(90_deg, 75);
+  chassis.pid_wait();
+  chassis.pid_drive_set(120_in, 95);
+  chassis.pid_wait();
+  // turning the bot to go to match loader
+  chassis.pid_turn_set(-90_deg, 75);
+  chassis.pid_wait();
+  set_match_loader_status(true);
+  chassis.pid_drive_set(10_in, 75);
+  chassis.pid_wait();
+  // outtaking balls from matchloader
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
+  IntakeMech.set_intake_status(true);
+  // waiting unitll balls are out
+  pros::delay(350);
+  
 
 
 }
