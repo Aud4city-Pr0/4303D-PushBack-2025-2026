@@ -54,14 +54,3 @@ void driver_control_intake() {
       IntakeMech.set_intake_status(false);
     }
 }
-
-void dirver_control_score_toggle() {
-  // controlls the scoring
-  if(master.get_digital(pros::E_CONTROLLER_DIGITAL_Y) == true) {
-    // setting the scoring
-    IntakeMech.set_scoring(IntakeController::MID_GOAL);
-  } else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_Y) == false) {
-    // setting the scoring
-    IntakeMech.set_scoring(IntakeController::TOP_GOAL);
-  }
-}

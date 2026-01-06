@@ -30,20 +30,15 @@ namespace IntakeController {
     {
         public:
         pros::Motor* IntakeMotorObjectA;
-        pros::Motor* IntakeMotorObjectB;
-        pros::Motor* IntakeMotorObjectC;
         int DefaultIntakeSpeed;
         // This is the intake classes constructor function, it takes in a motor and an int that ranges from 0-127.
-        Intake(pros::Motor &IntakeMotorA, pros::Motor &IntakeMotorB, pros::Motor &IntakeMotorC, const int IntakeSpeed) {
+        Intake(pros::Motor &IntakeMotorA, const int IntakeSpeed) {
           IntakeMotorObjectA = &IntakeMotorA;
-          IntakeMotorObjectB = &IntakeMotorB;
-          IntakeMotorObjectC = &IntakeMotorC;
           DefaultIntakeSpeed = IntakeSpeed;
         }
         // The intake functions
         void set_intake_status(bool IsRunning);
         void set_intake_status(bool IsRunning, const int IntakeSpeed);
         void set_intake_direction(Direction IntakeDir);
-        void set_scoring(Scoring ScoreType);
     };
 };

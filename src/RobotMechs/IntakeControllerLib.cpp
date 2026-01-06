@@ -19,12 +19,9 @@
 void IntakeController::Intake::set_intake_direction(IntakeController::Direction Dir) {
     if(Dir == IntakeController::INTAKE_FORWARD) {
         this->IntakeMotorObjectA->set_reversed(true);
-        this->IntakeMotorObjectB->set_reversed(true);
 
     } else if(Dir == IntakeController::INTAKE_BACKWARD) {
         this->IntakeMotorObjectA->set_reversed(false);
-        this->IntakeMotorObjectB->set_reversed(false);
-        this->IntakeMotorObjectC->set_reversed(false);
     }
 }
 
@@ -32,12 +29,8 @@ void IntakeController::Intake::set_intake_direction(IntakeController::Direction 
 void IntakeController::Intake::set_intake_status(bool IsRunning) {
     if(IsRunning == true) {
         this->IntakeMotorObjectA->move_voltage(this->DefaultIntakeSpeed);
-        this->IntakeMotorObjectB->move_voltage(this->DefaultIntakeSpeed);
-        this->IntakeMotorObjectC->move_voltage(this->DefaultIntakeSpeed);
     } else if (IsRunning == false) {
         this->IntakeMotorObjectA->brake();
-        this->IntakeMotorObjectB->brake();
-        this->IntakeMotorObjectC->brake();
     }
 }
 
@@ -45,20 +38,7 @@ void IntakeController::Intake::set_intake_status(bool IsRunning) {
 void IntakeController::Intake::set_intake_status(bool IsRunning, const int IntakeSpeed) {
     if(IsRunning == true) {
         this->IntakeMotorObjectA->move_voltage(IntakeSpeed);
-        this->IntakeMotorObjectB->move_voltage(IntakeSpeed);
-        this->IntakeMotorObjectC->move_voltage(IntakeSpeed);
     } else if (IsRunning == false) {
         this->IntakeMotorObjectA->brake();
-        this->IntakeMotorObjectB->brake();
-        this->IntakeMotorObjectC->brake();
-    }
-}
-
-// This function controlls the scoring
-void IntakeController::Intake::set_scoring(IntakeController::Scoring ScoreType) {
-    if (ScoreType == Scoring::TOP_GOAL) {
-        this->IntakeMotorObjectC->set_reversed(false);
-    } else if(ScoreType == Scoring::MID_GOAL) {
-        this->IntakeMotorObjectC->set_reversed(true);
     }
 }

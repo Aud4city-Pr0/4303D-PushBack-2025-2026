@@ -171,7 +171,7 @@ void SevenBlockAutoBlueRight() {
   pros::delay(950);
   chassis.pid_drive_set(-17_in, 55);
   chassis.pid_wait();
-  //IntakeMech.set_scoring(IntakeController::Scoring::TOP_GOAL);
+  //// mid goal or top goal scoring(IntakeController::Scoring::TOP_GOAL);
   //IntakeMech.set_intake_status(true);
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
   IntakeMech.set_intake_status(false);
@@ -249,7 +249,7 @@ void ThreeBlockAutoTopRed() {
   chassis.pid_wait();
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
   IntakeMech.set_intake_status(true);
-  IntakeMech.set_scoring(IntakeController::Scoring::MID_GOAL);
+  // mid goal or top goal scoring(IntakeController::Scoring::MID_GOAL);
   pros::delay(8000);
   IntakeMech.set_intake_status(false);
 }
@@ -286,7 +286,7 @@ void ThreeBlockAutoTopBlue() {
   chassis.pid_wait();
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
   IntakeMech.set_intake_status(true);
-  IntakeMech.set_scoring(IntakeController::Scoring::MID_GOAL);
+  // mid goal or top goal scoring(IntakeController::Scoring::MID_GOAL);
   pros::delay(8000);
   IntakeMech.set_intake_status(false);
 }
