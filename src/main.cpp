@@ -258,7 +258,7 @@ void opcontrol() {
     driver_control_intake();
     
     // Pistion indexer 
-    driver_control_indexer();
+    driver_control_indexer();  
     
 
     // Match loader mech toggle function  
