@@ -17,7 +17,8 @@ inline pros::Motor BlockIntakeMotorB(-7, pros::v5::MotorGears::blue);
 
 // our penmatics
 inline ez::Piston IndxerPisiton('B', false);
-inline ez::Piston MatchLoadMech('A', true); 
+inline ez::Piston MatchLoadMech('A', false);
+inline ez::Piston WingMech('C', false); 
 
 // mech defintions
 inline IntakeController::Intake IntakeMech(BlockIntakeMotorA, BlockIntakeMotorB,120000);

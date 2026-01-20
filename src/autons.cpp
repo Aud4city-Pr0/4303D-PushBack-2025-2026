@@ -2,6 +2,7 @@
 #include "RobotMechs/IntakeControllerLib.hpp"
 #include "RobotMechs/PistionIndexerLib.hpp"
 #include "main.h"
+#include "pros/device.hpp"
 #include "pros/rtos.hpp"
 #include "pros/motors.h"
 #include "subsystems.hpp"
@@ -66,33 +67,41 @@ void default_constants() {
 void SevenBlockAutoRedRight() {
   // the start of our 15 sec Seven block auto
   // driving the bot the blocks
-  chassis.pid_drive_set(7_in, 95);
+  chassis.pid_drive_set(10_in, 35);
   chassis.pid_wait();
   // turning on intake
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
   IntakeMech.set_intake_status(true, 10000);
   // turning the bot to face the three blocks on the corner of mid goal
-  chassis.pid_turn_set(-90_deg, 95);
+  chassis.pid_turn_set(-90_deg, 35);
   chassis.pid_wait();
-  chassis.pid_drive_set(12_in, 95);
+  chassis.pid_drive_set(26_in, 35);
+  pros::delay(2000);
   chassis.pid_wait();
-  chassis.pid_turn_set(45_deg, 95);
+  chassis.pid_turn_set(60_deg,55);
   chassis.pid_wait();
-  chassis.pid_drive_set(15_in, 95);
+  chassis.pid_drive_set(15_in, 55);
   chassis.pid_wait();
-  chassis.pid_turn_set(90_deg, 95);
+  chassis.pid_turn_set(40_deg, 55);
+  chassis.pid_wait();
+  chassis.pid_drive_set(21.5_in, 55);
+  chassis.pid_wait();
+  chassis.pid_turn_set(90_deg, 55);
   chassis.pid_wait();
   // activating matchloader
   set_match_loader_status(true);
-  chassis.pid_drive_set(15_in, 95);
+  chassis.pid_drive_set(7_in, 55);
   chassis.pid_wait();
   // delay before the next action because of matchloader
   pros::delay(950);
-  chassis.pid_drive_set(-35_in, 95);
+  chassis.pid_drive_set(-36_in, 55);
   set_match_loader_status(false);
   chassis.pid_wait();
-  IntakeMech.set_intake_status(IntakeController::Scoring::TOP_GOAL);
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
+  pros::delay(1000);
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_BACKWARD);
+  pros::delay(120);
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
   pros::delay(1000);
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
   IntakeMech.set_intake_status(false);
@@ -113,27 +122,37 @@ void SevenBlockAutoRedLeft() {
   // turning the bot to face the three blocks on the corner of mid goal
   chassis.pid_turn_set(90_deg, 95);
   chassis.pid_wait();
-  chassis.pid_drive_set(12_in, 95);
+  chassis.pid_drive_set(26_in, 35);
+  pros::delay(2000);
   chassis.pid_wait();
-  chassis.pid_turn_set(-45_deg, 95);
+  chassis.pid_turn_set(-60_deg,55);
   chassis.pid_wait();
-  chassis.pid_drive_set(15_in, 95);
+  chassis.pid_drive_set(15_in, 55);
   chassis.pid_wait();
-  chassis.pid_turn_set(270_deg, 95);
+  chassis.pid_turn_set(-40_deg, 55);
+  chassis.pid_wait();
+  chassis.pid_drive_set(26_in, 55);
+  chassis.pid_wait();
+  chassis.pid_turn_set(-90_deg, 55);
   chassis.pid_wait();
   // activating matchloader
   set_match_loader_status(true);
-  chassis.pid_drive_set(15_in, 95);
+  pros::delay(1000);
+  chassis.pid_drive_set(17_in, 95);
   chassis.pid_wait();
   // delay before the next action because of matchloader
   pros::delay(950);
-  chassis.pid_drive_set(-35_in, 95);
-  set_match_loader_status(false);
+  chassis.pid_drive_set(1_in, 95);
   chassis.pid_wait();
-  IntakeMech.set_intake_status(IntakeController::Scoring::TOP_GOAL);
+  chassis.pid_drive_set(-35_in, 95);
+  chassis.pid_wait();
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_BACKWARD);
+  pros::delay(1000);
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
   pros::delay(1000);
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
+  set_match_loader_status(false);
   IntakeMech.set_intake_status(false);
   // end of auto
 }
@@ -149,14 +168,18 @@ void SevenBlockAutoBlueRight() {
   // turning the bot to face the three blocks on the corner of mid goal
   chassis.pid_turn_set(-90_deg, 95);
   chassis.pid_wait();
-  chassis.pid_drive_set(21_in, 55);
+  chassis.pid_drive_set(26_in, 35);
+  pros::delay(2000);
   chassis.pid_wait();
-  chassis.pid_speed_max_set(95);
-  chassis.pid_turn_set(45_deg, 95);
+  chassis.pid_turn_set(60_deg,55);
   chassis.pid_wait();
-  chassis.pid_drive_set(36.5_in, 95);
+  chassis.pid_drive_set(15_in, 55);
   chassis.pid_wait();
-  chassis.pid_turn_set(-270_deg, 95);
+  chassis.pid_turn_set(40_deg, 55);
+  chassis.pid_wait();
+  chassis.pid_drive_set(21.5_in, 55);
+  chassis.pid_wait();
+  chassis.pid_turn_set(90_deg, 55);
   chassis.pid_wait();
   // activating matchloader
   set_match_loader_status(true);
@@ -169,11 +192,13 @@ void SevenBlockAutoBlueRight() {
   chassis.pid_drive_set(5_in, 55);
   // delay before the next action because of matchloader
   pros::delay(950);
-  chassis.pid_drive_set(-17_in, 55);
+  set_match_loader_status(false);
+  chassis.pid_drive_set(-36_in, 55);
   chassis.pid_wait();
-  //// mid goal or top goal scoring(IntakeController::Scoring::TOP_GOAL);
-  //IntakeMech.set_intake_status(true);
-  IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_BACKWARD);
+  pros::delay(1000);
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
+  pros::delay(1000);
   IntakeMech.set_intake_status(false);
   // end of auto
 }
@@ -181,37 +206,102 @@ void SevenBlockAutoBlueRight() {
 void SevenBlockAutoBlueLeft() {
   // the start of our 15 sec Seven block auto
   // driving the bot the blocks
-  chassis.pid_drive_set(7_in, 95);
+  chassis.pid_drive_set(7_in, 35);
   chassis.pid_wait();
   // turning on intake
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
   IntakeMech.set_intake_status(true, 10000);
   // turning the bot to face the three blocks on the corner of mid goal
-  chassis.pid_turn_set(-90_deg, 95);
+  chassis.pid_turn_set(90_deg, 35);
   chassis.pid_wait();
-  chassis.pid_drive_set(12_in, 95);
+  chassis.pid_drive_set(26_in, 35);
+  pros::delay(2000);
   chassis.pid_wait();
-  chassis.pid_turn_set(-45_deg, 95);
+  chassis.pid_turn_set(-60_deg,55);
   chassis.pid_wait();
-  chassis.pid_drive_set(15_in, 95);
+  chassis.pid_drive_set(15_in, 55);
   chassis.pid_wait();
-  chassis.pid_turn_set(270_deg, 95);
+  chassis.pid_turn_set(-40_deg, 55);
+  chassis.pid_wait();
+  chassis.pid_drive_set(25_in, 55);
+  chassis.pid_wait();
+  chassis.pid_turn_set(-90_deg, 55);
   chassis.pid_wait();
   // activating matchloader
   set_match_loader_status(true);
-  chassis.pid_drive_set(15_in, 95);
+  pros::delay(1000);
+  chassis.pid_drive_set(15_in, 85);
   chassis.pid_wait();
   // delay before the next action because of matchloader
   pros::delay(950);
-  chassis.pid_drive_set(-35_in, 95);
-  set_match_loader_status(false);
+  chassis.pid_drive_set(-35_in, 55);
   chassis.pid_wait();
-  IntakeMech.set_intake_status(IntakeController::Scoring::TOP_GOAL);
+  chassis.pid_drive_set(1_in, 55);
+  chassis.pid_wait();
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_BACKWARD);
+  pros::delay(990);
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
   pros::delay(1000);
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
   IntakeMech.set_intake_status(false);
+  set_match_loader_status(false);
   // end of auto
+}
+void ThreePlusFourBlockAuto() {
+  // the three plus four block auto
+  chassis.pid_drive_set(10_in, 55);
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
+  IntakeMech.set_intake_status(true, 10000);
+  chassis.pid_wait();
+  chassis.pid_turn_set(-90_deg, 55);
+  chassis.pid_wait();
+  chassis.pid_drive_set(23_in, 55); 
+  chassis.pid_wait();
+  // intaking the four balls while turning
+  chassis.pid_turn_set(-135_deg, 55);
+  chassis.pid_wait();
+  // turn off intake
+  IntakeMech.set_intake_status(false);
+  chassis.pid_drive_set(15_in, 55);
+  chassis.pid_wait();
+  // outaking 2 of the 4 balls into middle goal
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_BACKWARD);
+  IntakeMech.set_intake_status(true, 7500);
+  // waiting until all balls are out
+  pros::delay(1000);
+  IntakeMech.set_intake_status(false);
+  chassis.pid_drive_set(-10_in, 55);
+  chassis.pid_wait();
+  chassis.pid_turn_set(60_deg, 55);
+  chassis.pid_wait();
+  chassis.pid_drive_set(17_in, 55);
+  chassis.pid_wait();
+  chassis.pid_turn_set(40_deg, 55);
+  chassis.pid_wait();
+  chassis.pid_drive_set(25_in, 55);
+  chassis.pid_wait();
+  chassis.pid_turn_set(90_deg, 55);
+  // setting up for match loding
+  set_match_loader_status(true);
+  // making sure that match loader is properly deployed
+  pros::delay(1000);
+  chassis.pid_wait();
+  chassis.pid_drive_set(8.5_in, 55);
+  chassis.pid_wait();
+  chassis.pid_drive_set(5_in, 95);
+  chassis.pid_wait();
+  // intaking all of the balls
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
+  IndexerMech.set_pistion_status(PistionIndexerLib::PistionState::INDEXER_OPEN);
+  IntakeMech.set_intake_status(true, 12000);
+  // waiting to finish intake all of the balls
+  chassis.pid_drive_set(-32_in, 95);
+  chassis.pid_wait();
+  pros::delay(1000);
+  IndexerMech.set_pistion_status(PistionIndexerLib::PistionState::INDEXER_CLOSED);
+  IntakeMech.set_intake_status(false, 12000);
+
 }
 
 
@@ -298,50 +388,53 @@ void ThreeBlockAutoTopBlue() {
 // Our skills auto
 void SkillsAuto() {
   // our skills auto
-  chassis.pid_drive_set(10_in, 95);
+  chassis.pid_drive_set(10_in, 55);
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
   IntakeMech.set_intake_status(true, 10000);
   chassis.pid_wait();
-  chassis.pid_turn_set(90_deg, 95);
+  chassis.pid_turn_set(-90_deg, 55);
   chassis.pid_wait();
-  chassis.pid_drive_set(23_in, 95); 
+  chassis.pid_drive_set(23_in, 55); 
   chassis.pid_wait();
   // intaking the four balls while turning
-  chassis.pid_turn_set(-45_deg, 95);
+  chassis.pid_turn_set(-135_deg, 55);
   chassis.pid_wait();
   // turn off intake
   IntakeMech.set_intake_status(false);
-  chassis.pid_drive_set(15_in, 95);
+  chassis.pid_drive_set(15_in, 55);
   chassis.pid_wait();
   // outaking 2 of the 4 balls into middle goal
   IntakeMech.set_intake_direction(IntakeController::INTAKE_BACKWARD);
-  IntakeMech.set_intake_status(true, 10000);
+  IntakeMech.set_intake_status(true, 7500);
   // waiting until all balls are out
-  pros::delay(990);
+  pros::delay(1000);
   IntakeMech.set_intake_status(false);
-  chassis.pid_drive_set(-10_in, 95);
+  chassis.pid_drive_set(-10_in, 55);
   chassis.pid_wait();
-  chassis.pid_turn_set(45_deg, 95);
+  chassis.pid_turn_set(60_deg, 55);
   chassis.pid_wait();
-  chassis.pid_drive_set(37_in, 95);
+  chassis.pid_drive_set(17_in, 55);
   chassis.pid_wait();
-  chassis.pid_turn_set(270_deg, TURN_SPEED);
+  chassis.pid_turn_set(40_deg, 55);
   chassis.pid_wait();
+  chassis.pid_drive_set(25_in, 55);
+  chassis.pid_wait();
+  chassis.pid_turn_set(90_deg, 55);
   // setting up for match loding
   set_match_loader_status(true);
   // making sure that match loader is properly deployed
   pros::delay(120);
-  chassis.pid_speed_max_set(75);
   chassis.pid_wait();
-  chassis.pid_drive_set(15_in, 75);
+  chassis.pid_drive_set(8.5_in, 55);
   chassis.pid_wait();
+
   // intaking all of the balls
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
   IntakeMech.set_intake_status(true, 12000);
   // waiting to finish intake all of the balls
   pros::delay(950);
   IntakeMech.set_intake_status(false, 12000);
-  chassis.pid_drive_set(-35_in, 75);
+  chassis.pid_drive_set(-36_in, 55);
   chassis.pid_wait();
   // running intake and scoring blocks
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
@@ -349,17 +442,19 @@ void SkillsAuto() {
   pros::delay(550);
   // turning off intake and driving to other long goal
   IntakeMech.set_intake_status(false);
-  chassis.pid_drive_set(15_in, 75);
+  chassis.pid_drive_set(15_in, 55);
   chassis.pid_wait();
-  chassis.pid_turn_set(90_deg, 75);
+  chassis.pid_turn_set(180_deg, 55);
   chassis.pid_wait();
-  chassis.pid_drive_set(120_in, 95);
+  chassis.pid_drive_set(110_in, 55);
   chassis.pid_wait();
   // turning the bot to go to match loader
-  chassis.pid_turn_set(-90_deg, 75);
+  chassis.pid_turn_set(90_deg, 55);
   chassis.pid_wait();
   set_match_loader_status(true);
-  chassis.pid_drive_set(10_in, 75);
+  chassis.pid_drive_set(10_in, 55);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-36_in, 55);
   chassis.pid_wait();
   // outtaking balls from matchloader
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);

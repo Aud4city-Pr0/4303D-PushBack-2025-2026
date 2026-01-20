@@ -67,6 +67,7 @@ void initialize() {
       {"Seven Block Auto Left (RED)\n\nGets Seven blocks in the left long goal.", SevenBlockAutoRedLeft},
       {"Seven Block Auto Right (BLUE)\n\nGets Seven blocks in right long goal.", SevenBlockAutoBlueRight},
       {"Seven Block Auto Left (BLUE)\n\nGets Seven blocks in the left long goal.", SevenBlockAutoBlueLeft},
+      {"Four Plus Three Block Auto\n\nGets four blocks in bottom middle goal and three blocks in high goal", ThreePlusFourBlockAuto},
       {"Four Block Auto Bottom (RED)\n\nGets three blocks in bottom middle goal.", ThreeBlockAutoBottomRed},
       {"Four Block Auto Top (RED)\n\nGets four blocks in bottom middle goal.", ThreeBlockAutoTopRed},
       {"Four Block Auto Bottom (BLUE)\n\nGets four blocks in bottom middle goal.", ThreeBlockAutoBottomBlue},
@@ -258,12 +259,21 @@ void opcontrol() {
     driver_control_intake();
     
     // Pistion indexer 
-    driver_control_indexer();  
+    //driver_control_indexer();
+    // currently not working due to controlls
     
 
     // Match loader mech toggle function  
     MatchLoadMech.button_toggle(master.get_digital(DIGITAL_A));
+
+    // wing mech toggle
+    WingMech.button_toggle(master.get_digital(DIGITAL_L2));
+
+    // indexer controlls
+    IndxerPisiton.button_toggle(master.get_digital(DIGITAL_L1));
     
+
+  
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }

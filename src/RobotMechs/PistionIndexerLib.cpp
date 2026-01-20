@@ -26,12 +26,10 @@ void PistionIndexerLib::PistionIndexer::set_pistion_status(PistionState StateToS
 
 
 // this function gets the current enum in CurrentState
-int PistionIndexerLib::PistionIndexer::get_pistion_status() {
+bool PistionIndexerLib::PistionIndexer::get_pistion_status() {
     if(PistionIndexerLib::CurrentState == PistionIndexerLib::INDEXER_OPEN) {
-        return 1;
+        return true;
     } else if (PistionIndexerLib::CurrentState == PistionIndexerLib::INDEXER_CLOSED) {
-        return 2;
-    } else {
-        return 0;
-    }
+        return false;
+    } 
 }

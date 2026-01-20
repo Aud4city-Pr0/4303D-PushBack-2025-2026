@@ -31,16 +31,6 @@ void set_match_loader_status(bool status) {
     }
 }
 
-// This is driver control code for our lift
-void driver_control_indexer() {
-    // Pistion lift code
-    if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L1) && IndexerMech.get_pistion_status() == 2) {
-      IndexerMech.set_pistion_status(PistionIndexerLib::PistionState::INDEXER_OPEN);
-    } else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2) && IndexerMech.get_pistion_status() == 1) {
-      IndexerMech.set_pistion_status(PistionIndexerLib::PistionState::INDEXER_CLOSED);
-    }
-}
-
 // This is driver control code for our intake
 void driver_control_intake() {
     // intake controll code
