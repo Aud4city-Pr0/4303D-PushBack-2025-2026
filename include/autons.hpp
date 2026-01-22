@@ -5,6 +5,8 @@ void SevenBlockAutoRedRight();
 void SevenBlockAutoRedLeft();
 void SevenBlockAutoBlueRight();
 void SevenBlockAutoBlueLeft();
+void SevenBlockWithWingRushRight();
+void SevenBlockWithWingRushLeft();
 void ThreePlusFourBlockAuto();
 void ThreeBlockAutoBottomRed();
 void ThreeBlockAutoBottomBlue();

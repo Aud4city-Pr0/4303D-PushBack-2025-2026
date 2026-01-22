@@ -67,6 +67,7 @@ void initialize() {
       {"Seven Block Auto Left (RED)\n\nGets Seven blocks in the left long goal.", SevenBlockAutoRedLeft},
       {"Seven Block Auto Right (BLUE)\n\nGets Seven blocks in right long goal.", SevenBlockAutoBlueRight},
       {"Seven Block Auto Left (BLUE)\n\nGets Seven blocks in the left long goal.", SevenBlockAutoBlueLeft},
+      {"Seven Block Auto With Wing Rush Right\n\nGets Seven blocks in the right long goal and does wing rush.", SevenBlockWithWingRushRight},
       {"Four Plus Three Block Auto\n\nGets four blocks in bottom middle goal and three blocks in high goal", ThreePlusFourBlockAuto},
       {"Four Block Auto Bottom (RED)\n\nGets three blocks in bottom middle goal.", ThreeBlockAutoBottomRed},
       {"Four Block Auto Top (RED)\n\nGets four blocks in bottom middle goal.", ThreeBlockAutoTopRed},

@@ -15,10 +15,6 @@
 #include "RobotMechs/PistionIndexerLib.hpp"
 #include "pros/misc.h"
 
-// Helper vars
-// ------------
-bool Scorestatus = false;
-
 // Helper functions
 // ----------------
 
@@ -29,6 +25,15 @@ void set_match_loader_status(bool status) {
     } else if(status == false && MatchLoadMech.get() == true) {
         MatchLoadMech.set(false);
     }
+}
+
+// This function helps control the wing mech for auto
+void set_wing_status(bool status) {
+  if(status == true && WingMech.get() == false) {
+    WingMech.set(true);
+  } else if(status == false && WingMech.get() == true) {
+    WingMech.set(false);
+  }
 }
 
 // This is driver control code for our intake
