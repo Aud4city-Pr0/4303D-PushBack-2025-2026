@@ -17,5 +17,5 @@ void set_indexer_status(bool status);
 void set_wing_status(bool status);
 // This function contains intake code for driver
 void driver_control_intake();
-// This function contains pistion indexer code for driver
-void driver_control_indexer();
+// This function contains pistion wing code for driver
+void driver_control_wing();

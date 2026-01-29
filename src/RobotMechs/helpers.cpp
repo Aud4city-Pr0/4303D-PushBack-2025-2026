@@ -49,3 +49,12 @@ void driver_control_intake() {
       IntakeMech.set_intake_status(false);
     }
 }
+
+// Driver controll code for wing mech
+void driver_control_wing() {
+  if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L2) == true) {
+    WingMech.set(false);
+  } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L2) == false) {
+    WingMech.set(true);
+  }
+}

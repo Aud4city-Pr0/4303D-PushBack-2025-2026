@@ -16,7 +16,7 @@ ez::Drive chassis(
     {-3, -2, -1},     // Left Chassis Ports (negative port will reverse it!)
     {8, 9, 10},  // Right Chassis Ports (negative port will reverse it!)
 
-    15,      // IMU Port
+    7,      // IMU Port
     2.75,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
     450);   // Wheel RPM = cartridge * (motor gear / wheel gear)
 
@@ -268,11 +268,11 @@ void opcontrol() {
     // Match loader mech toggle function  
     MatchLoadMech.button_toggle(master.get_digital(DIGITAL_A));
 
-    // wing mech toggle
-    WingMech.button_toggle(master.get_digital(DIGITAL_L2));
-
     // indexer controlls
     IndxerPisiton.button_toggle(master.get_digital(DIGITAL_L1));
+
+    // wing controlls
+    driver_control_wing();
     
 
   
