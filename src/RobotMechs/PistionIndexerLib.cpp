@@ -31,5 +31,7 @@ bool PistionIndexerLib::PistionIndexer::get_pistion_status() {
         return true;
     } else if (PistionIndexerLib::CurrentState == PistionIndexerLib::INDEXER_CLOSED) {
         return false;
+    } else {
+        return false;
     } 
 }

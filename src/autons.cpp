@@ -152,13 +152,13 @@ void SevenBlockWithWingRushRight() {
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
   IntakeMech.set_intake_status(false);
   // going to do wing rush
-  chassis.pid_drive_set(-10_in, 75);
+  chassis.pid_drive_set(10_in, 75);
   chassis.pid_wait();
   chassis.pid_turn_set(-90_deg, 75);
   chassis.pid_wait();
-  chassis.pid_drive_set(12_in, 75);
+  chassis.pid_drive_set(10.5_in, 75);
   chassis.pid_wait();
-  chassis.pid_turn_set(180_deg, 75);
+  chassis.pid_turn_set(-205_deg, 75);
   chassis.pid_wait();
   // going and driving fast
   chassis.pid_drive_set(-19_in, 75);
@@ -214,9 +214,9 @@ void SevenBlockWithWingRushLeft() {
   chassis.pid_wait();
   chassis.pid_turn_set(-90_deg, 75);
   chassis.pid_wait();
-  chassis.pid_drive_set(12_in, 75);
+  chassis.pid_drive_set(10.5_in, 75);
   chassis.pid_wait();
-  chassis.pid_turn_set(180_deg, 75);
+  chassis.pid_turn_set(270_deg, 75);
   chassis.pid_wait();
   // going and driving fast
   chassis.pid_drive_set(-19_in, 75);

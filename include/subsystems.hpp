@@ -12,11 +12,11 @@ extern Drive chassis;
 
 
 // motor defintions for mech classes
-inline pros::Motor BlockIntakeMotorA(-6, pros::v5::MotorGears::blue);
-inline pros::Motor BlockIntakeMotorB(-7, pros::v5::MotorGears::blue);
+inline pros::Motor BlockIntakeMotorA(-5, pros::v5::MotorGears::blue);
+inline pros::Motor BlockIntakeMotorB(-6, pros::v5::MotorGears::blue);
 
 // our penmatics
-inline ez::Piston IndxerPisiton('B', false);
+inline ez::Piston IndxerPisiton('B', true);
 inline ez::Piston MatchLoadMech('A', false);
 inline ez::Piston WingMech('C', false); 
 
