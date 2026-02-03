@@ -4,6 +4,7 @@ void default_constants();
 void SevenBlockAutoRedRight();
 void SevenBlockAutoRedLeft();
 void SevenBlockAutoBlueRight();
+void WinPointOnlyAuto();
 void SevenBlockAutoBlueLeft();
 void SevenBlockWithWingRushRight();
 void SevenBlockWithWingRushLeft();

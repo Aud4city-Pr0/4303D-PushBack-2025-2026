@@ -67,6 +67,7 @@ void initialize() {
       {"Seven Block Auto Left (RED)\n\nGets Seven blocks in the left long goal.", SevenBlockAutoRedLeft},
       {"Seven Block Auto Right (BLUE)\n\nGets Seven blocks in right long goal.", SevenBlockAutoBlueRight},
       {"Seven Block Auto Left (BLUE)\n\nGets Seven blocks in the left long goal.", SevenBlockAutoBlueLeft},
+      {"RUN IF OTHER TEAM HAS WINPOINT!!\n\n Moves forward 2 inches", WinPointOnlyAuto},
       {"Seven Block Auto With Wing Rush Right\n\nGets Seven blocks in the right long goal and does wing rush.", SevenBlockWithWingRushRight},
       {"Seven Block Auto With Wing Rush Left\n\nGets Seven blocks in the left long goal and does wing rush.", SevenBlockWithWingRushLeft},
       {"Four Plus Three Block Auto\n\nGets four blocks in bottom middle goal and three blocks in high goal", ThreePlusFourBlockAuto},
@@ -260,19 +261,16 @@ void opcontrol() {
     // intake controll code
     driver_control_intake();
     
-    // Pistion indexer 
-    //driver_control_indexer();
-    // currently not working due to controlls
-    
 
     // Match loader mech toggle function  
     MatchLoadMech.button_toggle(master.get_digital(DIGITAL_A));
 
-    // indexer controlls
-    IndxerPisiton.button_toggle(master.get_digital(DIGITAL_L1));
 
     // wing controlls
     driver_control_wing();
+
+    // closer controlls
+    driver_control_closer();
     
 
   

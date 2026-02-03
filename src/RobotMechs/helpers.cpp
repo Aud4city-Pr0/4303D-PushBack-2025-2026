@@ -53,8 +53,17 @@ void driver_control_intake() {
 // Driver controll code for wing mech
 void driver_control_wing() {
   if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L2) == true) {
-    WingMech.set(false);
-  } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L2) == false) {
     WingMech.set(true);
+  } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L2) == false) {
+    WingMech.set(false);
+  }
+}
+
+// Driver controll code for closer mech
+void driver_control_closer() {
+  if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L1) == true) {
+    IndxerPisiton.set(true);
+  } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L1) == false) {
+    IndxerPisiton.set(false);
   }
 }

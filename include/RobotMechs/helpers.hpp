@@ -19,3 +19,5 @@ void set_wing_status(bool status);
 void driver_control_intake();
 // This function contains pistion wing code for driver
 void driver_control_wing();
+// This function contains pistion closer code for driver
+void driver_control_closer();
