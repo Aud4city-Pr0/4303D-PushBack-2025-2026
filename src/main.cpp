@@ -63,6 +63,7 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({ 
+    {"Skills Auto\n\nThis is our auton for skills this year.", SkillsAuto},
       {"Seven Block Auto Right (RED)\n\nGets Seven blocks in right long goal.", SevenBlockAutoRedRight},
       {"Seven Block Auto Left (RED)\n\nGets Seven blocks in the left long goal.", SevenBlockAutoRedLeft},
       {"Seven Block Auto Right (BLUE)\n\nGets Seven blocks in right long goal.", SevenBlockAutoBlueRight},
@@ -74,8 +75,8 @@ void initialize() {
       {"Four Block Auto Bottom (RED)\n\nGets three blocks in bottom middle goal.", ThreeBlockAutoBottomRed},
       {"Four Block Auto Top (RED)\n\nGets four blocks in bottom middle goal.", ThreeBlockAutoTopRed},
       {"Four Block Auto Bottom (BLUE)\n\nGets four blocks in bottom middle goal.", ThreeBlockAutoBottomBlue},
-      {"Four Block Auto Top (BLUE)\n\nGets four blocks in bottom middle goal.", ThreeBlockAutoTopBlue},
-      {"Skills Auto\n\nThis is our auton for skills this year.", SkillsAuto}
+      {"Four Block Auto Top (BLUE)\n\nGets four blocks in bottom middle goal.", ThreeBlockAutoTopBlue}
+      
   });
 
   // Initialize chassis and auton selector`
