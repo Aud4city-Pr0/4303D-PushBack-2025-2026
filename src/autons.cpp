@@ -480,7 +480,9 @@ void SkillsAuto() {
   // driving to goal
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
   IntakeMech.set_intake_status( true, 12000);
-  chassis.pid_drive_set(22_in, 50);  
+  chassis.pid_drive_set(20_in, 50);  
+  chassis.pid_wait();
+  chassis.pid_drive_set(10_in, 10);
   chassis.pid_wait();
   // matchloading all blocks
   pros::delay(1);
@@ -512,7 +514,7 @@ void SkillsAuto() {
   chassis.pid_wait();
   // scoring
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
-  pros::delay(1000);
+  pros::delay(2000);
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
   IntakeMech.set_intake_status(false);
   // going to match loader
@@ -521,10 +523,12 @@ void SkillsAuto() {
   // delaying for matchloader
   set_match_loader_status(true);
   pros::delay(700);
-  chassis.pid_drive_set(24_in, 50);
-  chassis.pid_wait();
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
   IntakeMech.set_intake_status(true, 12000);
+  chassis.pid_drive_set(20_in, 50);
+  chassis.pid_wait();
+  chassis.pid_drive_set(10_in, 10);
+  chassis.pid_wait();
   // going to score
   chassis.pid_drive_set(-36_in, DRIVE_SPEED);
   chassis.pid_wait();
@@ -532,11 +536,12 @@ void SkillsAuto() {
   // scoring
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
   pros::delay(1000);
+  IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
   // stoping scoring
   IntakeMech.set_intake_status(false);
   chassis.pid_drive_set(15_in, DRIVE_SPEED);
   chassis.pid_wait();
-  chassis.pid_turn_set(90_deg, TURN_SPEED);
+  chassis.pid_turn_set(0_deg, TURN_SPEED);
   chassis.pid_wait();
   chassis.pid_drive_set(95_in, DRIVE_SPEED);
   chassis.pid_wait();
