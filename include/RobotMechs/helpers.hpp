@@ -21,3 +21,5 @@ void driver_control_intake();
 void driver_control_wing();
 // This function contains pistion closer code for driver
 void driver_control_closer();
+// This function controls mid goal mech
+void driver_control_mid();

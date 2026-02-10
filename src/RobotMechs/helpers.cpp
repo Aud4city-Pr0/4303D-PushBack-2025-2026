@@ -13,7 +13,12 @@
 #include "RobotMechs/helpers.hpp"
 #include "RobotMechs/IntakeControllerLib.hpp"
 #include "RobotMechs/PistionIndexerLib.hpp"
+#include "RobotMechs/MidGoalLib.hpp"
 #include "pros/misc.h"
+
+// Helper vars
+// -----------
+bool IsActive = false;
 
 // Helper functions
 // ----------------
@@ -65,5 +70,17 @@ void driver_control_closer() {
     IndxerPisiton.set(true);
   } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L1) == false) {
     IndxerPisiton.set(false);
+  }
+}
+
+
+// dirver controll cdde for mid mech
+void driver_control_mid() {
+  if(master.get_digital(pros::E_CONTROLLER_DIGITAL_Y) == true && IsActive == false) {
+    MidMech.set_active(false);
+    IsActive = true;
+  } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_Y) == false && IsActive == true) {
+    MidMech.set_active(true);
+    IsActive = false;
   }
 }
