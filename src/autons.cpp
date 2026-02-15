@@ -465,14 +465,11 @@ void SkillsAuto() {
   IntakeMech.set_intake_status(false);
   chassis.pid_drive_set(15_in, DRIVE_SPEED);
   chassis.pid_wait();
-  chassis.pid_turn_set(0_deg, TURN_SPEED);
+  chassis.pid_turn_set(-180_deg, TURN_SPEED);
   chassis.pid_wait();
   chassis.pid_drive_set(95_in, DRIVE_SPEED);
   chassis.pid_wait();
-  chassis.pid_turn_set(90_deg, TURN_SPEED);
-  chassis.pid_wait();
-  // going to match loader
-  chassis.pid_drive_set(15_in, 50);
+  chassis.pid_turn_set(-90_deg, TURN_SPEED);
   chassis.pid_wait();
   // delaying for matchloader
   set_match_loader_status(true);
@@ -485,10 +482,13 @@ void SkillsAuto() {
   chassis.pid_wait();
   set_match_loader_status(false);
   chassis.pid_drive_set(-15_in, DRIVE_SPEED);
-  // going to other side
-  chassis.pid_drive_set(12_in, DRIVE_SPEED);
   chassis.pid_wait();
+  // going to other side
   chassis.pid_turn_set(190_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(11.5_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(90_deg, TURN_SPEED);
   chassis.pid_wait();
   chassis.pid_drive_set(87_in, DRIVE_SPEED);
   chassis.pid_wait();

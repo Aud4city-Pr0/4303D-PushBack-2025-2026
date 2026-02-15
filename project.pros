@@ -425,7 +425,8 @@
     },
     "upload_options": {
       "description": "Welcome to our teams default program file.",
-      "icon": "X"
+      "icon": "X",
+      "slot": 1
     },
     "use_early_access": false
   }
