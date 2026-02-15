@@ -432,12 +432,12 @@ void SkillsAuto() {
   chassis.pid_wait();
   // truning on intake
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
-  IntakeMech.set_intake_status(true, 12000);
   // driving backwards
   chassis.pid_drive_set(-36_in, 50);
   chassis.pid_wait();
   // scoring
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
+  IntakeMech.set_intake_status(true, 12000);
   pros::delay(3000);
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
   IntakeMech.set_intake_status(false);
@@ -448,7 +448,6 @@ void SkillsAuto() {
   set_match_loader_status(true);
   pros::delay(700);
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
-  IntakeMech.set_intake_status(true, 12000);
   chassis.pid_drive_set(20_in, 50);
   chassis.pid_wait();
   chassis.pid_drive_set(10_in, 10);
@@ -459,6 +458,7 @@ void SkillsAuto() {
   set_match_loader_status(false);
   // scoring
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
+  IntakeMech.set_intake_status(true, 12000);
   pros::delay(3000);
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
   // stoping scoring
@@ -475,7 +475,6 @@ void SkillsAuto() {
   set_match_loader_status(true);
   pros::delay(700);
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
-  IntakeMech.set_intake_status(true, 12000);
   chassis.pid_drive_set(20_in, 50);
   chassis.pid_wait();
   chassis.pid_drive_set(10_in, 10);
@@ -494,35 +493,50 @@ void SkillsAuto() {
   chassis.pid_wait();
   chassis.pid_turn_set(0_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(15_in, DRIVE_SPEED);
+  chassis.pid_drive_set(12_in, DRIVE_SPEED);
   chassis.pid_wait();
   chassis.pid_turn_set(90_deg, DRIVE_SPEED);
   chassis.pid_wait();
   // scoring
-  chassis.pid_drive_set(-38_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-38_in, 50);
   chassis.pid_wait();
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
+  IntakeMech.set_intake_status(true, 12000);
   pros::delay(3000);
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
   IntakeMech.set_intake_status(false);
-  chassis.pid_drive_set(15_in, 50);
+  chassis.pid_drive_set(10_in, 50);
   chassis.pid_wait();
   // delaying for matchloader
   set_match_loader_status(true);
   pros::delay(700);
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
-  IntakeMech.set_intake_status(true, 12000);
   chassis.pid_drive_set(20_in, 50);
   chassis.pid_wait();
   chassis.pid_drive_set(10_in, 10);
   chassis.pid_wait();
   set_match_loader_status(false);
-  chassis.pid_drive_set(-38_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-38_in, 50);
   chassis.pid_wait();
   // scoring
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
+  IntakeMech.set_intake_status(true, 12000);
   pros::delay(3000);
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
   IntakeMech.set_intake_status(false);
+  // going for park
+  IntakeMech.set_intake_status(true);
+  chassis.pid_drive_set(20_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(35_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(20_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(0_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(90_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(25_in, DRIVE_SPEED);
+  chassis.pid_wait();
 
 }
