@@ -90,7 +90,7 @@ void SevenBlockAutoRedRight() {
   // activating matchloader
   set_match_loader_status(true);
   pros::delay(700);
-  chassis.pid_drive_set(27_in, 50);
+  chassis.pid_drive_set(20_in, 50);
   chassis.pid_wait();
   chassis.pid_drive_set(-36_in, 55);
   set_match_loader_status(false);
@@ -115,49 +115,37 @@ void SevenBlockWithWingRushRight() {
   // turning the bot to face the three blocks on the corner of mid goal
   chassis.pid_turn_set(-90_deg, 80);
   chassis.pid_wait();
-  chassis.pid_drive_set(26_in, 80);
-  pros::delay(2000);
-  chassis.pid_wait();
   chassis.pid_drive_set(28_in, 80);
   chassis.pid_wait();
   chassis.pid_turn_set(45_deg,80);
   chassis.pid_wait();
-  chassis.pid_drive_set(40_in, 80);
+  chassis.pid_drive_set(34.5_in, 80);
   chassis.pid_wait();
-  chassis.pid_turn_set(82_deg, 80);
-  chassis.pid_wait();
-  chassis.pid_drive_set(-8_in, 80);
-  chassis.pid_wait();
-  chassis.pid_drive_set(8_in, 80);
+  chassis.pid_turn_set(90_deg, 80);
   chassis.pid_wait();
   // activating matchloader
   set_match_loader_status(true);
-  chassis.pid_drive_set(7_in, 80);
+  chassis.pid_drive_set(14_in, 50);
   chassis.pid_wait();
   // delay before the next action because of matchloader
-  pros::delay(950);
-  chassis.pid_drive_set(-36_in, 80);
+  chassis.pid_drive_set(-36_in, 55);
   set_match_loader_status(false);
   chassis.pid_wait();
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
-  pros::delay(1000);
-  IntakeMech.set_intake_direction(IntakeController::INTAKE_BACKWARD);
-  pros::delay(120);
-  IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
-  pros::delay(1000);
+  pros::delay(3000);
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
   IntakeMech.set_intake_status(false);
   // going to do wing rush
   chassis.pid_drive_set(10_in, 80);
   chassis.pid_wait();
-  chassis.pid_turn_set(-90_deg, 80);
+  chassis.pid_turn_set(0_deg, 80);
   chassis.pid_wait();
   chassis.pid_drive_set(10.5_in, 80);
   chassis.pid_wait();
-  chassis.pid_turn_set(-205_deg, 80);
+  chassis.pid_turn_set(90_deg, 80);
   chassis.pid_wait();
   // going and driving fast
-  chassis.pid_drive_set(-19_in, 80);
+  chassis.pid_drive_set(-24_in, 80);
   chassis.pid_wait();
   set_wing_status(false);
   // end of auto
@@ -178,23 +166,19 @@ void SevenBlockWithWingRushLeft() {
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
   IntakeMech.set_intake_status(true, 10000);
   // turning the bot to face the three blocks on the corner of mid goal
-  chassis.pid_turn_set(-90_deg, 80);
+  chassis.pid_turn_set(90_deg, 80);
   chassis.pid_wait();
   chassis.pid_drive_set(28_in, 80);
   chassis.pid_wait();
   chassis.pid_turn_set(45_deg,80);
   chassis.pid_wait();
-  chassis.pid_drive_set(40_in, 80);
+  chassis.pid_drive_set(34.5_in, 80);
   chassis.pid_wait();
-  chassis.pid_turn_set(-82_deg, 80);
-  chassis.pid_wait();
-  chassis.pid_drive_set(-8_in, 80);
-  chassis.pid_wait();
-  chassis.pid_drive_set(8_in, 80);
+  chassis.pid_turn_set(-90_deg, 80);
   chassis.pid_wait();
   // activating matchloader
   set_match_loader_status(true);
-  chassis.pid_drive_set(7_in, 80);
+  chassis.pid_drive_set(14_in, 80);
   chassis.pid_wait();
   // delay before the next action because of matchloader
   pros::delay(950);
@@ -202,24 +186,20 @@ void SevenBlockWithWingRushLeft() {
   set_match_loader_status(false);
   chassis.pid_wait();
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
-  pros::delay(1000);
-  IntakeMech.set_intake_direction(IntakeController::INTAKE_BACKWARD);
-  pros::delay(120);
-  IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
-  pros::delay(1000);
+  pros::delay(300);
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
   IntakeMech.set_intake_status(false);
   // going to do wing rush
   chassis.pid_drive_set(-10_in, 80);
   chassis.pid_wait();
-  chassis.pid_turn_set(-90_deg, 80);
+  chassis.pid_turn_set(0_deg, 80);
   chassis.pid_wait();
   chassis.pid_drive_set(10.5_in, 80);
   chassis.pid_wait();
-  chassis.pid_turn_set(270_deg, 80);
+  chassis.pid_turn_set(-90_deg, 80);
   chassis.pid_wait();
   // going and driving fast
-  chassis.pid_drive_set(-19_in, 80);
+  chassis.pid_drive_set(-24_in, 80);
   chassis.pid_wait();
   set_wing_status(false);
   // end of auto
@@ -252,7 +232,7 @@ void SevenBlockAutoRedLeft() {
   // activating matchloader
   set_match_loader_status(true);
   pros::delay(700);
-  chassis.pid_drive_set(27_in, 50);
+  chassis.pid_drive_set(20_in, 50);
   chassis.pid_wait();
   chassis.pid_drive_set(-36_in, 55);
   set_match_loader_status(false);
