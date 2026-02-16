@@ -13,13 +13,13 @@
 
 // functions
 void MidGoalLib::MidGoalMech::set_active(bool active) {
-    if(active == false && MidGoalMech::MidPistion->get() == true) {
-        IntakeObject->set_intake_direction(IntakeController::INTAKE_FORWARD);
-        MidPistion->set(true);
-        IntakeObject->set_intake_status(true, 4500);
-    } else if(active == true && MidGoalMech::MidPistion->get() == false) {
+    if(active == false) {
         IntakeObject->set_intake_direction(IntakeController::INTAKE_FORWARD);
         MidPistion->set(false);
+        IntakeObject->set_intake_status(true);
+    } else if(active == true) {
+        IntakeObject->set_intake_direction(IntakeController::INTAKE_FORWARD);
+        MidPistion->set(true);
         IntakeObject->set_intake_status(false);
     }
 }

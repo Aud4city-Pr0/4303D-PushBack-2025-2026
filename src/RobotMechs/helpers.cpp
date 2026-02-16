@@ -16,10 +16,6 @@
 #include "RobotMechs/MidGoalLib.hpp"
 #include "pros/misc.h"
 
-// Helper vars
-// -----------
-bool IsActive = false;
-
 // Helper functions
 // ----------------
 
@@ -76,11 +72,9 @@ void driver_control_closer() {
 
 // dirver controll cdde for mid mech
 void driver_control_mid() {
-  if(master.get_digital(pros::E_CONTROLLER_DIGITAL_Y) == true && IsActive == false) {
+  if(master.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
     MidMech.set_active(false);
-    IsActive = true;
-  } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_Y) == false && IsActive == true) {
+  } else{
     MidMech.set_active(true);
-    IsActive = false;
   }
 }
