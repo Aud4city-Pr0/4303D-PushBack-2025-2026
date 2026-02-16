@@ -8,4 +8,4 @@ This is where you will find our team's auto and driver pros project!
 
 1. Our teams autos and skills code 🧑‍💻.
 2. Custom libs that are speficly created for our bot's mechs (Eg. Intake, Little Will Mech (Matchloding mech), etc) 🤖.
-3. And many more! 🎊
+3. And much more!
