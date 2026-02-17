@@ -73,8 +73,8 @@ void driver_control_closer() {
 // dirver controll cdde for mid mech
 void driver_control_mid() {
   if(master.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
-    MidMech.set_active(false);
+    MidMech.set(false);
   } else{
-    MidMech.set_active(true);
+    MidMech.set(true);
   }
 }

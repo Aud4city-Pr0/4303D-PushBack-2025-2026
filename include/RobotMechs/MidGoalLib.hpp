@@ -15,16 +15,14 @@ namespace MidGoalLib {
     class MidGoalMech {
         // the main class
         public:
-        IntakeController::Intake* IntakeObject;
         ez::Piston* MidPistion;
         // the constructor function
-        MidGoalMech(IntakeController::Intake &BotIntake, ez::Piston &BotPisiton) {
-            IntakeObject = &BotIntake;
+        MidGoalMech(ez::Piston &BotPisiton) {
             MidPistion = &BotPisiton;
         }
 
         // class functions
         // This function controls if the mech is active
-        void set_active(bool active);
+        void set(bool active);
     };
 }

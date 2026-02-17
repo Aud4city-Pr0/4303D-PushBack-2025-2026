@@ -166,15 +166,15 @@ void SevenBlockWithWingRushLeft() {
   IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
   IntakeMech.set_intake_status(true, 10000);
   // turning the bot to face the three blocks on the corner of mid goal
-  chassis.pid_turn_set(90_deg, 80);
+  chassis.pid_turn_set(-90_deg, 80);
   chassis.pid_wait();
   chassis.pid_drive_set(28_in, 80);
   chassis.pid_wait();
-  chassis.pid_turn_set(45_deg,80);
+  chassis.pid_turn_set(-45_deg,80);
   chassis.pid_wait();
   chassis.pid_drive_set(34.5_in, 80);
   chassis.pid_wait();
-  chassis.pid_turn_set(-90_deg, 80);
+  chassis.pid_turn_set(90_deg, 80);
   chassis.pid_wait();
   // activating matchloader
   set_match_loader_status(true);

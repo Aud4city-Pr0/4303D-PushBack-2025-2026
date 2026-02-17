@@ -12,14 +12,10 @@
 #include "RobotMechs/MidGoalLib.hpp"
 
 // functions
-void MidGoalLib::MidGoalMech::set_active(bool active) {
+void MidGoalLib::MidGoalMech::set(bool active) {
     if(active == false) {
-        IntakeObject->set_intake_direction(IntakeController::INTAKE_FORWARD);
         MidPistion->set(false);
-        IntakeObject->set_intake_status(true);
     } else if(active == true) {
-        IntakeObject->set_intake_direction(IntakeController::INTAKE_FORWARD);
         MidPistion->set(true);
-        IntakeObject->set_intake_status(false);
     }
 }

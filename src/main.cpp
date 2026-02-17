@@ -272,7 +272,7 @@ void opcontrol() {
     driver_control_closer();
 
     // mid goal control
-    //driver_control_mid();  
+    driver_control_mid();  
     
 
   

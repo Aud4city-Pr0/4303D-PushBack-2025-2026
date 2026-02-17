@@ -25,4 +25,4 @@ inline ez::Piston MidGoal('D', true);
 // mech defintions
 inline IntakeController::Intake IntakeMech(BlockIntakeMotorA, BlockIntakeMotorB,120000);
 inline PistionIndexerLib::PistionIndexer IndexerMech(IndxerPisiton);
-inline MidGoalLib::MidGoalMech MidMech(IntakeMech, MidGoal);
+inline MidGoalLib::MidGoalMech MidMech(MidGoal);
