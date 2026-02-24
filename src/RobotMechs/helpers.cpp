@@ -46,7 +46,10 @@ void driver_control_intake() {
     } else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
       IntakeMech.set_intake_direction(IntakeController::INTAKE_BACKWARD);
       IntakeMech.set_intake_status(true);
+    } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
+      MidMech.set(true);
     } else {
+      MidMech.set(false);
       IntakeMech.set_intake_status(false);
     }
 }
@@ -66,15 +69,5 @@ void driver_control_closer() {
     IndxerPisiton.set(true);
   } else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L1) == false) {
     IndxerPisiton.set(false);
-  }
-}
-
-
-// dirver controll cdde for mid mech
-void driver_control_mid() {
-  if(master.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
-    MidMech.set(false);
-  } else{
-    MidMech.set(true);
   }
 }

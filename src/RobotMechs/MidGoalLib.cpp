@@ -15,7 +15,10 @@
 void MidGoalLib::MidGoalMech::set(bool active) {
     if(active == false) {
         MidPistion->set(false);
+        MidGoalIntake->set_intake_status(false);
     } else if(active == true) {
         MidPistion->set(true);
+        MidGoalIntake->set_intake_direction(IntakeController::INTAKE_BACKWARD);
+        MidGoalIntake->set_intake_status(true, 10000);
     }
 }

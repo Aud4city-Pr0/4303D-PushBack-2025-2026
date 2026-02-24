@@ -67,11 +67,11 @@ void default_constants() {
 void SevenBlockAutoRedRight() {
   // the start of our 15 sec Seven block auto
   // driving the bot the blocks
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
+  IntakeMech.set_intake_status(true, 10000);
   chassis.pid_drive_set(10_in, 80);
   chassis.pid_wait();
   // turning on intake
-  IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
-  IntakeMech.set_intake_status(true, 10000);
   // turning the bot to face the three blocks on the corner of mid goal
   chassis.pid_turn_set(-90_deg, 80);
   chassis.pid_wait();

@@ -16,9 +16,11 @@ namespace MidGoalLib {
         // the main class
         public:
         ez::Piston* MidPistion;
+        IntakeController::Intake* MidGoalIntake;
         // the constructor function
-        MidGoalMech(ez::Piston &BotPisiton) {
+        MidGoalMech(ez::Piston &BotPisiton, IntakeController::Intake &BotIntake) {
             MidPistion = &BotPisiton;
+            MidGoalIntake = &BotIntake;
         }
 
         // class functions
