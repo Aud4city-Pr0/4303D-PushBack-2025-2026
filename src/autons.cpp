@@ -243,6 +243,38 @@ void SevenBlockAutoRedLeft() {
   IntakeMech.set_intake_status(false);
   // end of auto
 }
+
+void SoloAutonWinPoint() {
+  // our solo auton win point TOP SECERATE DON'T SHOW NEIL!!!!!!
+  chassis.pid_drive_set(35_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(-90_deg, TURN_SPEED);
+  chassis.pid_wait();
+  // delopying matchloader and waiting
+  set_match_loader_status(true);
+  pros::delay(700);
+  // going to matchloader
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
+  IntakeMech.set_intake_status(true);
+  chassis.pid_drive_set(14_in, 50);
+  chassis.pid_wait();
+  set_match_loader_status(false);
+  // going to goal
+  chassis.pid_drive_set(-36_in, 50);
+  chassis.pid_wait();
+  // scoring
+  IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
+  pros::delay(1000);
+  // closing indexer and stoping intake
+  IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
+  IntakeMech.set_intake_status(false);
+  chassis.pid_drive_set(24_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(45_deg, TURN_SPEED);
+  chassis.pid_wait();
+  
+}
+
 void ThreePlusFourBlockAuto() {
   // the three plus four block auto
   chassis.pid_drive_set(32_in, 80);

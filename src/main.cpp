@@ -66,6 +66,7 @@ void initialize() {
       {"Seven Block Auto Right\n\nGets Seven blocks in right long goal.", SevenBlockAutoRedRight},
       {"Seven Block Auto Left\n\nGets Seven blocks in the left long goal.", SevenBlockAutoRedLeft},
       {"RUN IF OTHER TEAM HAS WINPOINT!!\n\n Moves forward 2 inches", WinPointOnlyAuto},
+      {"Solo Winpoint Auto \n\n This is our solo auton winpoint", SoloAutonWinPoint},
       {"Seven Block Auto With Wing Rush Right\n\nGets Seven blocks in the right long goal and does wing rush.", SevenBlockWithWingRushRight},
       {"Seven Block Auto With Wing Rush Left\n\nGets Seven blocks in the left long goal and does wing rush.", SevenBlockWithWingRushLeft},
       {"Four Plus Three Block Auto\n\nGets four blocks in bottom middle goal and three blocks in high goal", ThreePlusFourBlockAuto},
@@ -261,7 +262,7 @@ void opcontrol() {
     driver_control_intake();
     
 
-    // Match loader mech toggle function  
+    // Match loader mech toggle function
     MatchLoadMech.button_toggle(master.get_digital(DIGITAL_A));
 
 

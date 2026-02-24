@@ -12,3 +12,4 @@ void ThreeBlockAutoBottomBlue();
 void ThreeBlockAutoTopRed();
 void ThreeBlockAutoTopBlue();
 void SkillsAuto();
+void SoloAutonWinPoint();
