@@ -19,7 +19,7 @@ inline pros::Motor BlockIntakeMotorB(-6, pros::v5::MotorGears::blue);
 // our penmatics
 inline ez::Piston IndxerPisiton('B', true);
 inline ez::Piston MatchLoadMech('A', false);
-inline ez::Piston WingMech('C', true); 
+inline ez::Piston WingMech('C',false); 
 inline ez::Piston MidGoal('D', false);
 
 // mech defintions
