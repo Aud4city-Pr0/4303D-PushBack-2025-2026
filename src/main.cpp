@@ -62,7 +62,8 @@ void initialize() {
   // chassis.opcontrol_curve_buttons_right_set(pros::E_CONTROLLER_DIGITAL_Y, pros::E_CONTROLLER_DIGITAL_A);
 
   // Autonomous Selector using LLEMU
-  ez::as::auton_selector.autons_add({ 
+  ez::as::auton_selector.autons_add({
+      {"Skills Auto\n\nThis is our auton for skills this year.", SkillsAuto}, 
       {"Seven Block Auto Right\n\nGets Seven blocks in right long goal.", SevenBlockAutoRedRight},
       {"Seven Block Auto Left\n\nGets Seven blocks in the left long goal.", SevenBlockAutoRedLeft},
       {"RUN IF OTHER TEAM HAS WINPOINT!!\n\n Moves forward 2 inches", WinPointOnlyAuto},
@@ -73,8 +74,7 @@ void initialize() {
       {"Four Block Auto Bottom (RED)\n\nGets three blocks in bottom middle goal.", ThreeBlockAutoBottomRed},
       {"Four Block Auto Top (RED)\n\nGets four blocks in bottom middle goal.", ThreeBlockAutoTopRed},
       {"Four Block Auto Bottom (BLUE)\n\nGets four blocks in bottom middle goal.", ThreeBlockAutoBottomBlue},
-      {"Four Block Auto Top (BLUE)\n\nGets four blocks in bottom middle goal.", ThreeBlockAutoTopBlue},
-      {"Skills Auto\n\nThis is our auton for skills this year.", SkillsAuto}
+      {"Four Block Auto Top (BLUE)\n\nGets four blocks in bottom middle goal.", ThreeBlockAutoTopBlue}
       
   });
 

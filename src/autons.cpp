@@ -532,7 +532,7 @@ void SkillsAuto() {
   chassis.pid_drive_set(10_in, 10);
   chassis.pid_wait();
   // going to score
-  chassis.pid_drive_set(-38_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-38_in, 50);
   chassis.pid_wait();
   // scoring
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
@@ -540,8 +540,18 @@ void SkillsAuto() {
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
   // stoping scoring
   IntakeMech.set_intake_status(false);
-
-
+  set_match_loader_status(false);
+  // going to park
+  chassis.pid_drive_set(10_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(45_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(32_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  IntakeMech.set_intake_status(true);
+  chassis.pid_turn_set(-180_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(40_in, DRIVE_SPEED);
 
 
 }
