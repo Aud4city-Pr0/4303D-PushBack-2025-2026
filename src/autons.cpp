@@ -549,9 +549,12 @@ void SkillsAuto() {
   chassis.pid_drive_set(32_in, DRIVE_SPEED);
   chassis.pid_wait();
   IntakeMech.set_intake_status(true);
-  chassis.pid_turn_set(-180_deg, TURN_SPEED);
+  chassis.pid_turn_set(5_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(10_in, DRIVE_SPEED);
   chassis.pid_wait();
   chassis.pid_drive_set(40_in, DRIVE_SPEED);
+  chassis.pid_wait();
 
 
 }
