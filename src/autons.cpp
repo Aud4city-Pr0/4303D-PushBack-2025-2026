@@ -260,7 +260,7 @@ void SoloAutonWinPoint() {
   chassis.pid_wait();
   set_match_loader_status(false);
   // going to goal
-  chassis.pid_drive_set(-36_in, 50);
+  chassis.pid_drive_set(-36_in, 85);
   chassis.pid_wait();
   // scoring
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_OPEN);
@@ -268,11 +268,38 @@ void SoloAutonWinPoint() {
   // closing indexer and stoping intake
   IndexerMech.set_pistion_status(PistionIndexerLib::INDEXER_CLOSED);
   IntakeMech.set_intake_status(false);
-  chassis.pid_drive_set(24_in, DRIVE_SPEED);
+  chassis.pid_drive_set(15_in, DRIVE_SPEED);
   chassis.pid_wait();
-  chassis.pid_turn_set(45_deg, TURN_SPEED);
+  chassis.pid_turn_set(-215_deg, TURN_SPEED);
   chassis.pid_wait();
-  
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_FORWARD);
+  IntakeMech.set_intake_status(true);
+  chassis.pid_drive_set(28_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  pros::delay(1);
+  set_match_loader_status(true);
+  chassis.pid_turn_set(180_deg, TURN_SPEED);
+  chassis.pid_wait();
+  IntakeMech.set_intake_status(false);
+  set_match_loader_status(false);
+  chassis.pid_drive_set(41_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(54_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(8.5_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  IntakeMech.set_intake_direction(IntakeController::INTAKE_BACKWARD);
+  IntakeMech.set_intake_status(true);
+  pros::delay(950);
+  IntakeMech.set_intake_status(false);
+  chassis.pid_drive_set(-5_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(205_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(45_in, DRIVE_SPEED);
+  chassis.pid_wait();
+  chassis.pid_turn_set(250_deg, TURN_SPEED);
+  chassis.pid_wait();
 }
 
 void ThreePlusFourBlockAuto() {
