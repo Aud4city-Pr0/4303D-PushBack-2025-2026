@@ -63,8 +63,8 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-      {"Solo Winpoint Auto \n\n This is our solo auton winpoint", SoloAutonWinPoint},
-      {"Skills Auto\n\nThis is our auton for skills this year.", SkillsAuto}, 
+      {"Skills Auto\n\nThis is our auton for skills this year.", SkillsAuto},
+      {"Solo Winpoint Auto \n\n This is our solo auton winpoint", SoloAutonWinPoint}, 
       {"Seven Block Auto Right\n\nGets Seven blocks in right long goal.", SevenBlockAutoRedRight},
       {"Seven Block Auto Left\n\nGets Seven blocks in the left long goal.", SevenBlockAutoRedLeft},
       {"RUN IF OTHER TEAM HAS WINPOINT!!\n\n Moves forward 2 inches", WinPointOnlyAuto},
